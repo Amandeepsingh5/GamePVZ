@@ -8,7 +8,7 @@ Zoha Mehdi - Coding (Initial design and implementation of plant VS Zoombie model
 
 Amandeep singh - Coding (Initial design and implementation of plant VS Zoombie model class + commenting and indentation of the code)
 
-Tolowalope - UML diagram
+Toluwalope - UML diagram
 
 James - UML diagram
 
