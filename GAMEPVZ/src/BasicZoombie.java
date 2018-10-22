@@ -1,4 +1,3 @@
-
 public class BasicZoombie extends Zoombie {
 
 	public BasicZoombie() {
