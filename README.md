@@ -197,7 +197,7 @@ below:
   grass. This is how a sunflower() method works in the Game class.
   
  
- At first, we will try to loose in the game.
+
  
  After typing in 'DropPeashooter' a Peashooter will be dropped down on the grass. This plant is used to attack the zoombies in the 
  
@@ -216,6 +216,28 @@ below:
   Current Number of Zombies on the grass: 6
   
   We can see above that peaShooter increased from 0 to 1.
+  
+  To kill the zoombies we use 'Shoot' command. The shoot() method has several conditions that are checked and the once which go
+  
+  with the conditions are implemented which causes the person to loose or win the game. The simple rule to win this game is as followed:
+  
+  1) If Peeshooter assigned by the user are more than the zoombies in the game than we will the game
+  
+  2) If peeshooter and zoombies are equal in number than we win the game because each peeshooter kills one zoombie and one zoombie kills 
+  
+  one peeshooter; therefore, no one is left in the field alive but the house is safe as there are no more zoombies to kill.
+  
+  3) If there are three peeshooters on the field than three zombies are killed by the peashooters and the other three zoombies are 
+  
+  killed by the lawnmower; thus,  we will the game as all zoombies are dead.
+  
+  The rules to loose the game are:
+ 
+ If peeshooters are less than 3 like 2 or 1 than we lose the game because all the peeshooters die after killing one or two zombies and 
+ 
+ all the 3 landmowers are used to kill 3 more zombies but still one or two zoombies are left on the grass attacking the house; thus, we 
+ 
+ lose the game. The game provides not more than 3 land mowers. Therefore, this is how the game class is used to implement the game.
 
 
 
