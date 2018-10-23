@@ -27,7 +27,6 @@ Parser
 Zoombie
 
 The basic Zoobie class is used to give feature to one type of Zoombie found in level 1 of the game. This class extends the Zoombie class 
-
 where the features given to a particular zoombie are applied to it like health, power to attack and its description. Moreover the 
 
 Zoombie class also uses the getHealth() method to return the health of a particular Zoombie and also decrements the zoombies health when 
