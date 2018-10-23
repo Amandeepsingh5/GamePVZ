@@ -32,35 +32,22 @@ Zoombie class also uses the getHealth() method to return the health of a particu
 it is attacked by the plants (Peashoter, Cherryboom).
 
 The command Class is used to hold information about a command that was given by the user like (DropSunflower, DropPeashooter etc..). In 
-
 this class a field of type String 'commandWord' is used to holds the command that the user assigns to do in the game. 
-
 The constructor in this class creates the object of the command where the command given by the user will be stored. A getCommandWord() 
-
-method is used to return the command that the user has asked to implement and if it is null than the result returned is null. 
-
+method is used to return the command that the user has asked to implement and if it is null than the result returned is also null. 
 Furthermore, isUnKnown() method is used to set the commandWord field to null if the command given by the user is not valid like not 
-
 understandable or false otherwise.
 
 The CommandWord class consists of an array used to hold all the valid command words that the user can use in this game. CommandWord 
-
-class lets the Command class known which commands are valid and which commands are not valid. If the command used by the user is not 
-
+class lets the Command class know which commands are valid and which commands are not valid. If the command used by the user is not 
 found in the array containing the valid commands in CommandWord class than isKnown() method is implemented in the Command class to 
-
 assign null to the command given by the user as it is not understandable. The isCommand() method in CommandWord class is to used to 
-
 check that a given String is a valid command or not and getCommandList() method returns a list of all valid command.
 
 The Parser class acts as an input class where it reads input from the user and tries to interpret that it is a valid command or not 
+using the commandWord class. It checks the validity of the command given by the user by checking the user input against the known command from commandWord class array. If it is valid than it carries on its job else it assigns null to it.
 
-using the commandWord class. It checks that the command is valid by checking the user input against the known command from commandWord 
-
-class if it is valid than it carries on its job or assigns null to it.
-
-Game class is the one which uses all the other classes given above to implement the game. This class uses several methods to implement
-
+Game class is the one that uses all the other classes given above to implement the game. This class uses several methods to implement
 the game as listed below:
 
 PrintWelcome(),
