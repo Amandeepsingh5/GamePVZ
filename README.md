@@ -2,11 +2,11 @@ SYSC 3110 Project - Plants vs Zombies: the Puzzle!
 
 MileStone1: In this milestone we have been asked to make a console version of the game (Plant Vs Zoombies) with the UML diagrams. It is an initial design and implementation of the model part of the MVC.
 
-This project consist of four people as follwed:
+This project consist of four people as followed:
 
 Zoha Mehdi - Coding (Initial design and implementation of plant VS Zoombie model class + Readme file)
 
-Amandeep singh - Coding (Initial design and implementation of plant VS Zoombie model class + commenting and indentation of the code)
+Amandeep Singh - Coding (Initial design and implementation of plant VS Zoombie model class + commenting and indentation of the code)
 
 Toluwalope - UML diagram
 
@@ -168,10 +168,10 @@ The gainSun() method is just like collecting points falling from the sky as in t
   To kill the zoombies we use 'Shoot' command. The shoot() method is implemented by the 'Shoot' command whenever typed in by the user. The shoot() method have several conditions that are checked against the situation of the game and the amount of peaShooters the user possess to kill the zoombies. To win the game, The following conditions shown below are usually checked to process the shoot command.
  The simple rule to win this game is as followed:
   
-  1) If Peeshooter assigned by the user are more than the zoombies in the game than we will the game
+  1) If Peashooter assigned by the user are more than the zoombies in the game than we will the game
   
-  2) If peeshooter and zoombies are equal in number than we win the game because each peeshooter kills one zoombie and one zoombie kills 
-  one peeshooter; therefore, no one is left in the field alive but the house is safe as there are no more zoombies to kill.
+  2) If peashooter and zoombies are equal in number than we win the game because each peeshooter kills one zoombie and one zoombie kills 
+  one peashooter; therefore, no one is left in the field alive but the house is safe as there are no more zoombies to kill.
   
   3) If there are three peeshooters on the field than three zombies are killed by the peashooters and the other three zoombies are 
   
@@ -179,7 +179,7 @@ The gainSun() method is just like collecting points falling from the sky as in t
   
   The rules to loose the game are:
  
- If peeshooters are less than 3 like 2 or 1 than we lose the game because all the peeshooters die after killing one or two zombies and 
+ If peashooters are less than 3 like 2 or 1 than we lose the game because all the peeshooters die after killing one or two zombies and 
  all the 3 landmowers are used to kill 3 more zombies but still one or two more zoombies are left on the grass attacking the house; thus, we lose the game. Therefore, this is how the game class is used to implement the game.
 
 
