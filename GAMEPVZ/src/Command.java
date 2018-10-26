@@ -13,10 +13,10 @@ public class Command
      *                  was not recognised
      * @param secondWord The second word of the command
      */
-    public Command(String firstWord, String secondWord)
+    public Command(String firstWordIn, String secondWordIn)
     {
-        commandWord = firstWord;
-        this.secondWord = secondWord;
+        commandWord = firstWordIn;
+        secondWord = secondWordIn;
     }
 
     /**

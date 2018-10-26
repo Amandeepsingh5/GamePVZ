@@ -96,7 +96,7 @@ public class Game {
   			System.out.println("A CherryBomb has been dropped on the grass");
   			System.out.println(" ");
   			sun -=150;
-  			System.out.println("Cherry Bomb bursted, All Zombies Dead !move to level 2");
+  			System.out.println("Cherry Bomb bursted, All Zombies Dead! Move to level 2");
   		
   		}else {
   			
@@ -304,9 +304,9 @@ public class Game {
       printWelcome();
      
       currPoints();
+      
       // Enter the main command loop.  Here we repeatedly read commands and
       // execute them until the game is over.
-              
       boolean finished = false;
       while (! finished) {
           Command command = parser.getCommand();
@@ -314,33 +314,24 @@ public class Game {
       }
       System.out.println("Thank you for playing.  Good bye.");
   }
+  
   public void replay() 
   {            
-      printWelcome();
       this.sun=50;
       this.peaShooter =0;
       this.sunFlower=0;
       zombie = new BasicZoombie();
       
-		for(int i=enemy.size() -1; i >= 0;i--) {
-			
-			Game.enemy.remove(i);
-		}
+      for(int i=enemy.size() -1; i >= 0;i--) {
+		Game.enemy.remove(i);
+      }
       zombie = new BasicZoombie();
       
-		for(int i=0; i < 6;i++) {
-			Game.enemy.add(zombie);
-		}
-      currPoints();
-      // Enter the main command loop.  Here we repeatedly read commands and
-      // execute them until the game is over.
-              
-      boolean finished = false;
-      while (! finished) {
-          Command command = parser.getCommand();
-          finished = processCommand(command);
+      for(int i=0; i < 6;i++) {
+		Game.enemy.add(zombie);
       }
-      System.out.println("Thank you for playing.  Good bye.");
+      
+      play();
   }
 
 
@@ -368,10 +359,5 @@ public class Game {
 			 */
 		
 			f.play();
-
-		
-		
-
-
 	}
 }
