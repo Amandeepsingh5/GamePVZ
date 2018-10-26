@@ -13,15 +13,13 @@ public class Game {
 	private static int peaShooter = 0;
     private static int yardMower = 3;
     private static int cherryBomb = 0;
+    
 	public Game() {
 		PvZ.enemy = new ArrayList<Zoombie>();
 		parser = new Parser();
 		
 	}
 	
-	/*
-	 *  Connector Function between Sunflowers and the Sun Count
-	 */
 	public void printWelcome() {
 		System.out.println();
         System.out.println("->Welcome to the World of PlantsVsZombies!");
@@ -230,7 +228,7 @@ public class Game {
   }
 	  
 	  
-    public void loseGame() {
+   public void loseGame() {
     	System.out.println("Oops! You lost the Game");
     	System.out.println("      xxxxxxxxxxxxxxxxxx");
     	System.out.println("Do you wish to 'Replay' OR 'Quit'");
@@ -242,11 +240,12 @@ public class Game {
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
+    
   public void countZombie() {
 	  System.out.println("      -------------------------------------------------" );
 	  System.out.println("            Current Number of Zombies in the Grass:  " + enemy.size());
-	  System.out.println("            Current Number of Peashooter in the Grass:  " + this.peaShooter);
-	  System.out.println("            Current Number of yardMower in the Grass:" + this.yardMower);
+	  System.out.println("            Current Number of Peashooter in the Grass:  " + peaShooter);
+	  System.out.println("            Current Number of yardMower in the Grass:" + yardMower);
 	  System.out.println("      --------------------------------------------------" );
   }
   
