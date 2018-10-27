@@ -1,9 +1,16 @@
+/**
+ * The CommandWords class has the Arraylist of the valid commands in the game and checks that if the command 
+ * being entered is a valid command or not
+ * @author Amandeep Singh
+ *
+ */
 
-public class CommandWords
-{
+public class CommandWords{
+	
     // a constant array that holds all valid command words
+	
     private static final String[] validCommands = {
-        "DropPeashooter", "DropSunflower", "Shoot","Sunpoints" ,"DropCherrybomb","Replay", "Quit"
+    "DropPeashooter", "DropSunflower", "Shoot","Sunpoints" ,"DropCherrybomb","Replay", "Quit"
     };
 
     /**

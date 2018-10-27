@@ -1,26 +1,41 @@
 import java.io.*;
 import java.util.ArrayList;
 
-
+/*
+ * The Game class is the main class for running the console version of the Game. We did not use the Plant class or 
+ * Sunflower class for this Milestone because this is a console version of the Game. Technically, in the console
+ * version the Game class runs the Whole Game. But, keeping the principles of cohesion and coupling in mind we have created a x
+ *zombie class for which we are using the basic method. This Game is basically designed as 1D game. And, the Zombie dies as soon 
+ *as you shoot the zombie(with one shot).You initially start with 100 points, as you get the sun points you get 25 points with every sun.
+ *
+ *The Peashooters are used to shoot the Zombies and you can get each Peashooter for 150 sun points. 
+ *As this the 1D version of the Game, the Sunflower brings with itself 150 points instead of the like in the real 
+ *game the sunflower brings you extra suns which give you more points. As we don't care much about timing in this version of Game.
+ *So, Everytime we get a SunFlower we get 150 sun points.
+ *
+ */
 public class Game {
-	private Parser parser; 
-	Game PvZ;
-	BasicZoombie zombie;
+	private Parser parser; // creating a Parser instance
+	Game PvZ; // creating the Game instance
+	BasicZoombie zombie; // creating a BasicZoombie
 	
-	private static ArrayList<Zoombie> enemy;
-	private static int sun= 50;
-	private static int sunFlower = 0;
-	private static int peaShooter = 0;
-    private static int yardMower = 3;
-    private static int cherryBomb = 0;
+	private static ArrayList<Zoombie> enemy; //Creating a Arraylist for Storing Zombies
+	private static int sun= 50; // the game starts with 50 sun points
+	private static int sunFlower = 0; // the Number of sunflower in the starting of the Game is 0
+	private static int peaShooter = 0;// The Number of Peashooter in the Game starting are 0
+    private static int yardMower = 3; // The Number of YardMowers that initially exist are 3
+    private static int cherryBomb = 0; // the Number of cherryBomb are 0
+    
 	public Game() {
-		PvZ.enemy = new ArrayList<Zoombie>();
-		parser = new Parser();
+		PvZ.enemy = new ArrayList<Zoombie>(); // create a arraylist of zombies 
+		parser = new Parser();  //initialize the parser object 
 		
 	}
 	
 	/*
-	 *  Connector Function between Sunflowers and the Sun Count
+	 *  This PrintWelcome method generated A lot of welcome statements for the console version of the Game
+	 *  
+	 *  @author Amandeep Singh
 	 */
 	public void printWelcome() {
 		System.out.println();
@@ -34,12 +49,24 @@ public class Game {
         
         System.out.println();
 	}
+	/*
+	 * The gainSun methods adds the falling sunpoints to your account of currPoints.
+	 * And show you the Present status of the Game that a how many Points you have.
+	 * 
+	 * @author Zoha Mehdi
+	 */
 	
 	public void gainSun() {
-	    	sun += 25;
-	    	currPoints();	
+	    	sun += 25; // every falling sunPoint is 25 points 
+	    	currPoints();	// current number of sunpoints we have in the Game
 	}
 	
+	/*
+	 * The createEnemy method deals with the putting the zombies in the Enemy Arraylist
+	 * For the First level of the Game we just 6 Zombies on the Grass right now that we have to kill.
+	 * 
+	 * @author Zoha Mehdi
+	 */
 	public void createEnemy() {
 
 		zombie = new BasicZoombie();
@@ -48,20 +75,25 @@ public class Game {
 		}
 	}
 
-
-    
+	/*
+	 * The ProcessCommand method deals with recognizing the Command and check if it a Valid command if yes 
+	 * Follow the particular command.
+	 * 
+	 * @author Amandeep Singh
+	 */
    private boolean processCommand(Command command) 
    {
        
-       boolean wantToQuit = false;
+     boolean wantToQuit = false; // set wantToQuit to false
+     
      if(command.isUnknown()) {
-           System.out.println("I don't know what you mean...");
+           System.out.println("I don't know what you mean...");// if the Command is not a valid command print this
            return false;
        }
 
-     String commandWord = command.getCommandWord();
+     String commandWord = command.getCommandWord(); 
 
-       if (commandWord.equals("DropPeashooter")) {
+       if (commandWord.equals("DropPeashooter")) { //Check if the 
           peaShooter();
        }
        else if (commandWord.equals("DropSunflower")) {
@@ -249,56 +281,7 @@ public class Game {
 	  System.out.println("            Current Number of yardMower in the Grass:" + this.yardMower);
 	  System.out.println("      --------------------------------------------------" );
   }
-  
-	/**public void action(String x) {
-
-		if(x.equals("drop sunflower")) {
-			sunFlower += 1;
-			sun += 1;
-			System.out.println("A sunflower has been dropped");
-			System.out.println(sun + " sun points");
-			System.out.println(sunFlower + " sunflower(s)");
-			System.out.println(" ");
-		}else if(x.equals("drop peashooter")) {
-			if(sun >= 3) {
-				peaShooter += 1;
-				System.out.println(peaShooter + " pea Shooter");
-				System.out.println(" ");
-				sun -=3;
-			}else {
-				System.out.println("Not enough sunpoints");
-				System.out.println(" ");
-			}
-
-		}else if(x.equals("shoot")&& enemy.isEmpty() == false) {
-
-			if(peaShooter == 0) {
-				System.out.println("No pea Shooter");
-				System.out.println(" ");
-
-			}else {
-				if(peaShooter <= enemy.size()) {
-					for(int i = 0; i < peaShooter; i++) {
-						enemy.remove(0);
-						System.out.println("Zombie dead");
-						System.out.println(" ");
-					}
-				}
-				if(peaShooter > enemy.size())  {
-					int y = enemy.size();
-					for(int i = 0; i < y; i++) {
-						enemy.remove(0);
-						System.out.println("Zombie dead");
-						System.out.println(" ");
-					}
-
-				}
-			}
-		}
-
-	}
-	*/
-  
+ 
   public void play() 
   {            
       printWelcome();
@@ -351,27 +334,6 @@ public class Game {
 
 		Game f = new Game();
 		f.createEnemy();
-		/**while(enemy.isEmpty() == false) {
-
-			System.out.println("Commands");
-			System.out.println("drop sunflower");
-			System.out.println("drop peashooter");
-			System.out.println("shoot");
-			System.out.println(" ");
-
-			Scanner br = new Scanner(System.in);
-
-			
-			String name ;
-			name = br.nextLine();
-			//f.action(name);
-			 */
-		
 			f.play();
-
-		
-		
-
-
 	}
 }
