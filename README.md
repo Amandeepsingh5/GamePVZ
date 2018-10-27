@@ -4,13 +4,13 @@ MileStone1: In this milestone we have been asked to make a console version of th
 
 This project consist of four people as followed:
 
-Zoha Mehdi - Coding (Initial design and implementation of plant VS Zoombie model class + Readme file)
+Zoha Mehdi - Coding (Initial design and implementation of plant VS Zoombie model class + Readme file).
 
-Amandeep Singh - Coding (Initial design and implementation of plant VS Zoombie model class + commenting and indentation of the code)
+Amandeep Singh - Coding (Initial design and implementation of plant VS Zoombie model class + commenting and indentation of the code).
 
-Toluwalope - UML diagram
+Toluwalope - UML Class Diagram and initial coding design.
 
-James - UML diagram
+James - UML Sequence diagram.
 
 This project consists of 6 classes which work together to build up the console version of the game as listed below:
 
@@ -26,8 +26,7 @@ Parser
 
 Zoombie
 
-The basic Zoobie class is used to give feature to one type of Zoombie found in level 1 of the game. This class extends the Zoombie class 
-where the features given to a particular zoombie are applied to it like health, power to attack and its description. Moreover the 
+The basic Zoombie class is used to give feature to one type of Zoombie found in level 1 of the game. This class extends the Zoombie class where the features given to a particular zoombie are applied to it like health, power to attack and its description. Moreover the 
 Zoombie class also uses the getHealth() method to return the health of a particular Zoombie and also decrements the zoombies health when 
 it is attacked by the plants (Peashoter, Cherryboom).
 
