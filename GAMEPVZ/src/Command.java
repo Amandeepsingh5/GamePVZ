@@ -1,3 +1,6 @@
+/*
+ * The Command class check converts the command we have entered and returns it back as a string.
+ */
 public class Command
 {
     private String commandWord;

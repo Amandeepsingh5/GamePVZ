@@ -93,35 +93,39 @@ public class Game {
 
      String commandWord = command.getCommandWord(); 
 
-       if (commandWord.equals("DropPeashooter")) { //Check if the 
+       if (commandWord.equals("DropPeashooter")) { //Check if it the commands is "DropPeashooter". If yes, call the Peashooter method.
           peaShooter();
        }
-       else if (commandWord.equals("DropSunflower")) {
+       else if (commandWord.equals("DropSunflower")) { //Check if it the commands is "DropSunflower". If yes, call the Sunflower method.
           sunflower();
        }
-       else if (commandWord.equals("Shoot")) {
+       else if (commandWord.equals("Shoot")) { //Check if it the commands is "Shoot". If yes, call the Shoot method.
           shoot();
        }
-       else if (commandWord.equals("Sunpoints")) {
+       else if (commandWord.equals("Sunpoints")) { //Check if it the commands is "Sunpoints". If yes, call the gainSun method.
            gainSun();
         }
        
-       else if (commandWord.equals("DropCherrybomb")) {
+       else if (commandWord.equals("DropCherrybomb")) { //Check if it the commands is "DropCherrybomb". If yes, call the cherryBomb method.
            cherryBomb();
           
        }
-       else if (commandWord.equals("Quit")) {
+       else if (commandWord.equals("Quit")) {//Check if it the commands is "Quit". If yes, call the Quit method.
     	   wantToQuit = quit(command);
        }
-       else if(commandWord.equals("Replay")) {
+       else if(commandWord.equals("Replay")) {//Check if it the commands is "Replay". If yes, call the Replay method.
     	   replay();
        }
-      
- 
        // else command not recognised.
        return wantToQuit;
    }
-   
+   /*
+    * The cherryBomb Method is a type of plant for this level one of the Game.
+    * If dropped it kill all the Zombies present on the grass.
+    * For us it will kill all the 6 Zombies and then we move to the next level.
+    * 
+    * @authr Amandeep Singh
+    */
    private void cherryBomb() {
 	   if(sun >= 150) {
   			cherryBomb += 1;
@@ -131,16 +135,17 @@ public class Game {
   			System.out.println("Cherry Bomb bursted, All Zombies Dead !move to level 2");
   		
   		}else {
-  			
   			System.out.println("Not enough sunpoints to Buy CherryBomb");
   			System.out.println(" ");
   			currPoints();
-  		
-      }}
+      }
+   }
    
-	   
-	   
-
+   /*
+    * The Quit method if process if the Quit is typed in the console.
+    * @author Amandeep Singh
+    * 
+    */
    
    private boolean quit(Command command) 
    {
@@ -149,10 +154,17 @@ public class Game {
            return false;
        }
        else {
+    	   System.exit(0);
            return true;  // signal that we want to quit
        }
    }
 
+   /*
+    * The currPoints Method shows us how many points and plants we current have on the field.
+    * 
+    * @author Zoha Mehdi
+    * 
+    */
    public void currPoints() {
 		System.out.println("      ---------------------------------------------" );
 		System.out.println("           CURRENT STATUS OF THE GAME          " );
@@ -164,8 +176,12 @@ public class Game {
 		System.out.println("      ----------------------------------------------" );
 	}
   
-	
-
+   /*
+    * The peashooter method drops a peashooter on the Grass an deducts 100 sunpoints for that
+    * 
+    * @Toluwalope Ajisola
+    * 
+    */
    public void peaShooter() {
        if(sun >= 100) {
    			peaShooter += 1;
@@ -179,10 +195,15 @@ public class Game {
    			System.out.println(" ");
    			currPoints();
    		
-       }}
+       }
+    }
 	   
-	   
-   
+   /*
+    * The Sunflower method drops the Sunflower on the grass and gives us 150 sunpoints and deducts 50 
+    * Buying the sunflower
+    * 
+    * @author Toluwalope Ajisola
+    */
    
   public void sunflower() {
 	   sunFlower += 1;
@@ -193,6 +214,15 @@ public class Game {
 	
   }
   
+  /*
+   * The Shoot deals with different conditions how we will win or lose the Game when we kill the Zombies on the Grass.
+   * The Shoot method involves the moving of yardMower too.
+   * Currently three yardMowers on the Field.
+   * 
+   * @author Amandeep Singh 
+   * @author Zoha Mehdi
+   * 
+   */
   public void shoot() {
 	 
 	  if ((peaShooter > enemy.size() && enemy.size() > 0) && !(enemy.size()==0)) {
@@ -222,17 +252,14 @@ public class Game {
 			yardMower -= 1;
 			countZombie();
 			System.out.println(" ");
-		    }
-	  
+	  }
 	  else if ((peaShooter >3 && peaShooter <=6) && yardMower > 0) {
-		   
 				enemy.remove(0);
 				System.out.println("Zombie dead");
 				peaShooter -=1;
 				countZombie();
 				System.out.println(" ");
 		   }
-	  
 	  else if ((peaShooter <=2 )) {
 		  while(peaShooter > 0) {
 			  enemy.remove(0);
@@ -247,21 +274,13 @@ public class Game {
 				yardMower -=1;
 				countZombie();
 				System.out.println(" ");
-			  
 		  }
-		  
-		  loseGame();
-		  
-		  
-	  }
-	  
-	  else if ((peaShooter ==0 && yardMower ==0) && enemy.size() >0) {
-		  
 		  loseGame();
 	  }
-  }
 	  
-	  
+	  else if ((peaShooter ==0 && yardMower ==0) && enemy.size() >0) 
+		  loseGame();
+	  }
     public void loseGame() {
     	System.out.println("Oops! You lost the Game");
     	System.out.println("      xxxxxxxxxxxxxxxxxx");
@@ -281,7 +300,7 @@ public class Game {
 	  System.out.println("            Current Number of yardMower in the Grass:" + this.yardMower);
 	  System.out.println("      --------------------------------------------------" );
   }
- 
+  
   public void play() 
   {            
       printWelcome();
@@ -326,10 +345,6 @@ public class Game {
       System.out.println("Thank you for playing.  Good bye.");
   }
 
-
-
-
-	@SuppressWarnings("resource")
 	public static void main(String[] args){
 
 		Game f = new Game();
