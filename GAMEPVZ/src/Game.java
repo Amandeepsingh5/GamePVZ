@@ -23,8 +23,8 @@ public class Game {
 	private static int sun= 50; // the game starts with 50 sun points
 	private static int sunFlower = 0; // the Number of sunflower in the starting of the Game is 0
 	private static int peaShooter = 0;// The Number of Peashooter in the Game starting are 0
-    private static int yardMower = 3; // The Number of YardMowers that initially exist are 3
-    private static int cherryBomb = 0; // the Number of cherryBomb are 0
+        private static int yardMower = 3; // The Number of YardMowers that initially exist are 3
+        private static int cherryBomb = 0; // the Number of cherryBomb are 0
     
 	public Game() {
 		PvZ.enemy = new ArrayList<Zoombie>(); // create a arraylist of zombies 
