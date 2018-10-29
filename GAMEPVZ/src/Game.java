@@ -227,18 +227,16 @@ public class Game {
    */
   public void shoot() {
 	 
-	  if ((peaShooter > enemy.size() && enemy.size() > 0) && !(enemy.size()==0)) {
-		  enemy.remove(0);
+	  if ((peaShooter > enemy.size() && enemy.size() > 0) && !(enemy.size()==0)) { // these conditions decide whether we win or lose the game
+		  enemy.remove(0); //remove enemy
 		  System.out.println("Zombie dead");
-		  peaShooter -= 1;
+		  peaShooter -= 1; // decrease peaShooter
 		  countZombie();
-		  }
-		  
+		  }  
 	  else if(peaShooter >= 0 && yardMower>=0 && enemy.size()==0) {
-		  System.out.println("You win the game. Move to Level 2");
-		  
+		  System.out.println("You win the game. Move to Level 2"); // when all the zombies are killed(zero) and we are still left with peashooter and yardmower
+		  // We win the game
 	  }
-	  
 	  else if ((peaShooter <=3 && peaShooter >0) && yardMower ==3) {
 		    while(peaShooter >= 1) {
 		    	enemy.remove(0);
@@ -247,7 +245,10 @@ public class Game {
 				countZombie();
 				System.out.println(" ");
 		    }
-	  }else if((peaShooter ==0 && yardMower > 0) && enemy.size() > 0) {
+
+	  }
+	  else if((peaShooter ==0 && yardMower > 0) && enemy.size() > 0) { // 
+
 		    enemy.remove(0);
 			System.out.println("Zombie dead");
 			yardMower -= 1;
@@ -275,33 +276,53 @@ public class Game {
 				System.out.println(" ");
 		  }
 		  loseGame();
-	  }else if ((peaShooter ==0 && yardMower ==0) && enemy.size() >0) loseGame();
-	}
+
+	  }
+	  
+	  else if ((peaShooter ==0 && yardMower ==0) && enemy.size() >0) 
+		  loseGame(); // other we lose the Game
+	  }
+  
+  /*
+   * The lose game method prints that we lost the game and gives us an option if we want to replay or quit the game
+   */
 
     public void loseGame() {
     	System.out.println("Oops! You lost the Game");
     	System.out.println("      xxxxxxxxxxxxxxxxxx");
     	System.out.println("Do you wish to 'Replay' OR 'Quit'");
     	System.out.println("      xxxxxxxxxxxxxxxxxx");
-    	boolean finished = false;
+    	boolean finished = false;// is is gonna take either of those and give a chance if we want to quit or replay
         while (! finished) {
-            Command command = parser.getCommand();
+            Command command = parser.getCommand();// recognizing command
             finished = processCommand(command);
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
-    
+
+    /*
+     * The countZombie method is a being used as helper method in the shoot method above
+     * This method returns the status of plants and zombies present on the field at the current time
+     */
   public void countZombie() {
 	  System.out.println("      -------------------------------------------------" );
-	  System.out.println("            Current Number of Zombies in the Grass:  " + enemy.size());
-	  System.out.println("            Current Number of Peashooter in the Grass:  " + peaShooter);
-	  System.out.println("            Current Number of yardMower in the Grass:" + yardMower);
+	  System.out.println("            Current Number of Zombies in the Grass:  " + enemy.size());  // number of zombies
+	  System.out.println("            Current Number of Peashooter in the Grass:  " + this.peaShooter); // number of peashooters
+	  System.out.println("            Current Number of yardMower in the Grass:" + this.yardMower); //number of yardmowers
+
+    
+ 
 	  System.out.println("      --------------------------------------------------" );
   }
-  
+  /*
+   * The play method is another helper method with which we start the game.It gives us the current status of game.
+   * As well as helps us in getting familiar with the game.
+   * 
+   * @author Amandeep Singh
+   */
   public void play() 
   {            
-      printWelcome();
+      printWelcome(); // print statements at the starting of the Game.
      
       currPoints();
       
@@ -314,21 +335,36 @@ public class Game {
       }
       System.out.println("Thank you for playing.  Good bye.");
   }
-  
+  /*
+   * The replay method comes in play when we lose the game,then we have two options either to quit the game or to replay.
+   * 
+   * @author Zoha Mehdi
+   */
   public void replay() 
   {            
-      this.sun=50;
+      printWelcome(); // welcome statements
+      this.sun=50; // starting the game with 50 sun points again
       this.peaShooter =0;
       this.sunFlower=0;
       zombie = new BasicZoombie();
       
-      for(int i=enemy.size() -1; i >= 0;i--) {
-		Game.enemy.remove(i);
-      }
+
+		for(int i=enemy.size() -1; i >= 0;i--) {
+			Game.enemy.remove(i); // removing the zombies from the old lost game and then putting back 6 zombies in the game as we are replaying the game
+		}
       zombie = new BasicZoombie();
       
-      for(int i=0; i < 6;i++) {
-		Game.enemy.add(zombie);
+		for(int i=0; i < 6;i++) {
+			Game.enemy.add(zombie); //adding the 6 zombies to the field for the replay version of the game
+		}
+      currPoints(); // Give current status of the Game
+      // Enter the main command loop.  Here we repeatedly read commands and
+      // execute them until the game is over.
+      boolean finished = false;
+      while (! finished) {
+          Command command = parser.getCommand();
+          finished = processCommand(command);
+
       }
       
       play();
@@ -336,8 +372,8 @@ public class Game {
 
 	public static void main(String[] args){
 
-		Game f = new Game();
-		f.createEnemy();
-			f.play();
+		Game f = new Game(); // make a new Game object f
+		f.createEnemy(); // add the six zombies to the arraylist
+			f.play(); //Start the console version of the Game
 	}
 }
