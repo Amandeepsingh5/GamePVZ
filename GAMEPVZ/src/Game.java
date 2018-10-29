@@ -30,7 +30,6 @@ public class Game {
 	public Game() {
 		PvZ.enemy = new ArrayList<Zoombie>(); // create a arraylist of zombies 
 		parser = new Parser();  //initialize the parser object 
-		
 	}
 	
 
@@ -135,7 +134,6 @@ public class Game {
   			System.out.println(" ");
   			sun -=150;
   			System.out.println("Cherry Bomb bursted, All Zombies Dead! Move to level 2");
-  		
   		}else {
   			System.out.println("Not enough sunpoints to Buy CherryBomb");
   			System.out.println(" ");
@@ -170,7 +168,6 @@ public class Game {
    public void currPoints() {
 		System.out.println("      ---------------------------------------------" );
 		System.out.println("           CURRENT STATUS OF THE GAME          " );
-		
 		System.out.println("           Current Sun points : "  + this.sun);
 		System.out.println("           Current Pea Shooters on the grass : "  + this.peaShooter);
 		System.out.println("           Current Sun Flowers on the grass : " + this.sunFlower);
@@ -308,10 +305,7 @@ public class Game {
 	  System.out.println("      -------------------------------------------------" );
 	  System.out.println("            Current Number of Zombies in the Grass:  " + enemy.size());  // number of zombies
 	  System.out.println("            Current Number of Peashooter in the Grass:  " + this.peaShooter); // number of peashooters
-	  System.out.println("            Current Number of yardMower in the Grass:" + this.yardMower); //number of yardmowers
-
-    
- 
+	  System.out.println("            Current Number of yardMower in the Grass:" + this.yardMower); //number of yardmower
 	  System.out.println("      --------------------------------------------------" );
   }
   /*
@@ -347,14 +341,12 @@ public class Game {
       this.peaShooter =0;
       this.sunFlower=0;
       zombie = new BasicZoombie();
-      
-
-		for(int i=enemy.size() -1; i >= 0;i--) {
+      for(int i=enemy.size() -1; i >= 0;i--) {
 			Game.enemy.remove(i); // removing the zombies from the old lost game and then putting back 6 zombies in the game as we are replaying the game
 		}
-      zombie = new BasicZoombie();
+                zombie = new BasicZoombie();
       
-		for(int i=0; i < 6;i++) {
+      for(int i=0; i < 6;i++) {
 			Game.enemy.add(zombie); //adding the 6 zombies to the field for the replay version of the game
 		}
       currPoints(); // Give current status of the Game
@@ -364,9 +356,7 @@ public class Game {
       while (! finished) {
           Command command = parser.getCommand();
           finished = processCommand(command);
-
       }
-      
       play();
   }
 
