@@ -19,6 +19,7 @@ public class Game {
 	Game PvZ; // creating the Game instance
 	BasicZoombie zombie; // creating a BasicZoombie
 	
+
 	private static ArrayList<Zoombie> enemy; //Creating a Arraylist for Storing Zombies
 	private static int sun= 50; // the game starts with 50 sun points
 	private static int sunFlower = 0; // the Number of sunflower in the starting of the Game is 0
@@ -32,6 +33,7 @@ public class Game {
 		
 	}
 	
+
 	/*
 	 *  This PrintWelcome method generated A lot of welcome statements for the console version of the Game
 	 *  
@@ -132,7 +134,7 @@ public class Game {
   			System.out.println("A CherryBomb has been dropped on the grass");
   			System.out.println(" ");
   			sun -=150;
-  			System.out.println("Cherry Bomb bursted, All Zombies Dead !move to level 2");
+  			System.out.println("Cherry Bomb bursted, All Zombies Dead! Move to level 2");
   		
   		}else {
   			System.out.println("Not enough sunpoints to Buy CherryBomb");
@@ -243,22 +245,22 @@ public class Game {
 				countZombie();
 				System.out.println(" ");
 		    }
+
 	  }
 	  else if((peaShooter ==0 && yardMower > 0) && enemy.size() > 0) { // 
+
 		    enemy.remove(0);
 			System.out.println("Zombie dead");
 			yardMower -= 1;
 			countZombie();
 			System.out.println(" ");
-	  }
-	  else if ((peaShooter >3 && peaShooter <=6) && yardMower > 0) {
+	  }else if ((peaShooter >3 && peaShooter <=6) && yardMower > 0) {
 				enemy.remove(0);
 				System.out.println("Zombie dead");
 				peaShooter -=1;
 				countZombie();
 				System.out.println(" ");
-		   }
-	  else if ((peaShooter <=2 )) {
+	  } else if ((peaShooter <=2 )) {
 		  while(peaShooter > 0) {
 			  enemy.remove(0);
 				System.out.println("Zombie dead");
@@ -274,6 +276,7 @@ public class Game {
 				System.out.println(" ");
 		  }
 		  loseGame();
+
 	  }
 	  
 	  else if ((peaShooter ==0 && yardMower ==0) && enemy.size() >0) 
@@ -283,6 +286,7 @@ public class Game {
   /*
    * The lose game method prints that we lost the game and gives us an option if we want to replay or quit the game
    */
+
     public void loseGame() {
     	System.out.println("Oops! You lost the Game");
     	System.out.println("      xxxxxxxxxxxxxxxxxx");
@@ -295,6 +299,7 @@ public class Game {
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
+
     /*
      * The countZombie method is a being used as helper method in the shoot method above
      * This method returns the status of plants and zombies present on the field at the current time
@@ -304,6 +309,9 @@ public class Game {
 	  System.out.println("            Current Number of Zombies in the Grass:  " + enemy.size());  // number of zombies
 	  System.out.println("            Current Number of Peashooter in the Grass:  " + this.peaShooter); // number of peashooters
 	  System.out.println("            Current Number of yardMower in the Grass:" + this.yardMower); //number of yardmowers
+
+    
+ 
 	  System.out.println("      --------------------------------------------------" );
   }
   /*
@@ -317,9 +325,9 @@ public class Game {
       printWelcome(); // print statements at the starting of the Game.
      
       currPoints();
+      
       // Enter the main command loop.  Here we repeatedly read commands and
       // execute them until the game is over.
-              
       boolean finished = false;
       while (! finished) {
           Command command = parser.getCommand();
@@ -340,6 +348,7 @@ public class Game {
       this.sunFlower=0;
       zombie = new BasicZoombie();
       
+
 		for(int i=enemy.size() -1; i >= 0;i--) {
 			Game.enemy.remove(i); // removing the zombies from the old lost game and then putting back 6 zombies in the game as we are replaying the game
 		}
@@ -349,15 +358,16 @@ public class Game {
 			Game.enemy.add(zombie); //adding the 6 zombies to the field for the replay version of the game
 		}
       currPoints(); // Give current status of the Game
-      
       // Enter the main command loop.  Here we repeatedly read commands and
       // execute them until the game is over.
       boolean finished = false;
       while (! finished) {
           Command command = parser.getCommand();
           finished = processCommand(command);
+
       }
-      System.out.println("Thank you for playing.  Good bye.");
+      
+      play();
   }
 
 	public static void main(String[] args){

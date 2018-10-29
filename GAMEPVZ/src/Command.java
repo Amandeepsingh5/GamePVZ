@@ -13,11 +13,15 @@ public class Command
      * @param firstWord The first word of the command. Null if the command was not recognised
      * @param secondWord The second word of the command
      */
+<<<<<<< HEAD
+    public Command(String firstWordIn, String secondWordIn)
+=======
     
     public Command(String firstWord, String secondWord)
+>>>>>>> 8d9215bea0da8198fe7ee825b9a27b7b1d8aeba4
     {
-        commandWord = firstWord;
-        this.secondWord = secondWord;
+        commandWord = firstWordIn;
+        secondWord = secondWordIn;
     }
 
     /**
