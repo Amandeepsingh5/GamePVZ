@@ -7,13 +7,22 @@
 public class Action {
 	/*Table of Action IDs
 	 *  000 - No action
-	 *  001 - Move Left, or Attack
+	 *  001 - Move Left, or Attack Left if Occupied
+	 *  002 - Generate Sun
 	 */
 	private int ID;
 	private int magnitude;
 	public Action(int id, int power) {
 		ID = id;
 		magnitude = power;
+	}
+	
+	public int getID() {
+		return ID;
+	}
+	
+	public int getPower() {
+		return magnitude;
 	}
 
 }

@@ -8,24 +8,14 @@ import java.util.ArrayList;
  *
  */
 public class Game {
-	private Parser parser; 
-	Game PvZ;
-	BasicZoombie zombie;
 	private static final int LANES = 2;
 	private static final int TILES = 5;
-	
-	private static ArrayList<Zoombie> enemy;
-	private static int sun= 50;
-	private static int sunFlower = 0;
-	private static int peaShooter = 0;
-    private static int yardMower = 3;
-    private static int cherryBomb = 0;
     
     private ArrayList<ArrayList<GameEntity>> lawn;
-    
+	private int sun= 50;
+	private int passiveIncome = 25;
+	
 	public Game() {
-		PvZ.enemy = new ArrayList<Zoombie>();
-		parser = new Parser();
 		lawn = new ArrayList<ArrayList<GameEntity>>(LANES);
 		for(ArrayList<GameEntity> lane: lawn) {
 			lane = new ArrayList<GameEntity>(TILES);
@@ -33,6 +23,7 @@ public class Game {
 		
 	}
 	
+	/* Old Code for the Text Based Engine
 	public void printWelcome() {
 		System.out.println();
         System.out.println("->Welcome to the World of PlantsVsZombies!");
@@ -45,6 +36,7 @@ public class Game {
         
         System.out.println();
 	}
+	
 	
 	public void gainSun() {
 	    	sun += 25;
@@ -239,6 +231,7 @@ public class Game {
 		  loseGame();
 	  }
   }
+  */
   
   /*
    * Generic Function to place a new plant at a given location(lane, tile)
@@ -269,7 +262,7 @@ public class Game {
   }
 	  
   /*
-   * Function that ticks every in game turn to interate over all current tiles to acquire game actions.
+   * Function that ticks every in game turn to iterate over all current tiles to acquire game actions.
    */
   public void turnTick() {
 	  int laneIndex, depthIndex;
@@ -284,12 +277,30 @@ public class Game {
 		   laneIndex++;
 		  }
 	  }
+	  sun += passiveIncome;
   }
   
+  /*
+   * Function that resolve the action on the data. See Action Class for the ID table
+   */
   private void handleAction(Action command, int lane, int depth, GameEntity caller) {
-	  
+	  if(command.getID() == 0) {
+		  return;
+	  }else if(command.getID() == 1) {
+		  if(depth == 0) {
+			  //game over command
+		  }else if(lawn.get(lane).get(depth-1) == null) {				  
+			  lawn.get(lane).add(depth - 1, caller);
+			  lawn.get(lane).add(depth, null);
+		  }else {
+			  lawn.get(lane).get(depth-1).takeDamage(command.getPower());
+		  }
+	  }else if(command.getID() == 2) {
+		  sun += command.getPower();
+	  }
   }
-	  
+  
+	  /*Legacy Code
    public void loseGame() {
     	System.out.println("Oops! You lost the Game");
     	System.out.println("      xxxxxxxxxxxxxxxxxx");
@@ -345,14 +356,10 @@ public class Game {
       
       play();
   }
-
-
+*/
 
 
 	@SuppressWarnings("resource")
 	public static void main(String[] args){
-		Game f = new Game();
-		f.createEnemy();
-		f.play();
 	}
 }
