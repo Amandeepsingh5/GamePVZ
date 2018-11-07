@@ -6,6 +6,8 @@ public class Game {
 	private Parser parser; 
 	Game PvZ;
 	BasicZoombie zombie;
+	private static final int LANES = 2;
+	private static final int TILES = 5;
 	
 	private static ArrayList<Zoombie> enemy;
 	private static int sun= 50;
@@ -14,9 +16,15 @@ public class Game {
     private static int yardMower = 3;
     private static int cherryBomb = 0;
     
+    private ArrayList<ArrayList<GameEntity>> lawn;
+    
 	public Game() {
 		PvZ.enemy = new ArrayList<Zoombie>();
 		parser = new Parser();
+		lawn = new ArrayList<ArrayList<GameEntity>>(LANES);
+		for(ArrayList<GameEntity> lane: lawn) {
+			lane = new ArrayList<GameEntity>(TILES);
+		}
 		
 	}
 	
@@ -226,6 +234,34 @@ public class Game {
 		  loseGame();
 	  }
   }
+  
+  /*
+   * Generic Function to place a new plant at a given location(lane, tile)
+   */
+  public void placePlant(Plant newPlant, int lane, int depth) {
+	  assert(newPlant != null);//Note to self, change this to throw an exception in the future
+	  assert(lane >= 0 && lane < LANES && depth >= 0 && depth < TILES);//Change to an exception in the future.
+	  
+	   GameEntity location = lawn.get(lane).get(depth);
+	   
+	   if(location == null) {
+		   location = newPlant;
+	   }else {
+		   //throw exception
+	   }
+  }
+  
+  /*
+   * Generic Function to spawn a zombie at the end of a given lane. Will throw an exception in the future
+   */
+  public void spawnZombie(Zoombie spawn, int lane) {
+	  GameEntity location = lawn.get(lane).get(TILES-1);
+	  if(location != null) {
+		  location = spawn;
+	  }else {
+		  //throw exception
+	  }
+  }
 	  
 	  
    public void loseGame() {
@@ -248,55 +284,6 @@ public class Game {
 	  System.out.println("            Current Number of yardMower in the Grass:" + yardMower);
 	  System.out.println("      --------------------------------------------------" );
   }
-  
-	/**public void action(String x) {
-
-		if(x.equals("drop sunflower")) {
-			sunFlower += 1;
-			sun += 1;
-			System.out.println("A sunflower has been dropped");
-			System.out.println(sun + " sun points");
-			System.out.println(sunFlower + " sunflower(s)");
-			System.out.println(" ");
-		}else if(x.equals("drop peashooter")) {
-			if(sun >= 3) {
-				peaShooter += 1;
-				System.out.println(peaShooter + " pea Shooter");
-				System.out.println(" ");
-				sun -=3;
-			}else {
-				System.out.println("Not enough sunpoints");
-				System.out.println(" ");
-			}
-
-		}else if(x.equals("shoot")&& enemy.isEmpty() == false) {
-
-			if(peaShooter == 0) {
-				System.out.println("No pea Shooter");
-				System.out.println(" ");
-
-			}else {
-				if(peaShooter <= enemy.size()) {
-					for(int i = 0; i < peaShooter; i++) {
-						enemy.remove(0);
-						System.out.println("Zombie dead");
-						System.out.println(" ");
-					}
-				}
-				if(peaShooter > enemy.size())  {
-					int y = enemy.size();
-					for(int i = 0; i < y; i++) {
-						enemy.remove(0);
-						System.out.println("Zombie dead");
-						System.out.println(" ");
-					}
-
-				}
-			}
-		}
-
-	}
-	*/
   
   public void play() 
   {            

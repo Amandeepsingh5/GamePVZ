@@ -6,7 +6,7 @@ import java.util.*;
  * @author zoha mehdi
  *
  */
-public class Zoombie {
+public class Zoombie implements GameEntity {
 	
 	private String description; //Type of zoombie
 	private int health; //Zoombie health
@@ -38,15 +38,14 @@ public class Zoombie {
 	}
 	
 
-	public void decrementHealth(int attack) {
+	public void takeDamage(int attack) {
 		health -= attack;
 		
 	}
 	
-	public void attack(Zoombie zoombie, int health) {
-		zoombie.decrementHealth(attack);
+	public void gameFunction() {
+		
 	}
-	
 	
 	
 	
