@@ -23,7 +23,7 @@ public abstract class Plant implements GameEntity{
 	/* General Function that contains plant functionality
 	 * 		EX: Plants make sun, peashooters launch projectiles ect....
 	 */
-	public abstract void gameFunction();
+	public abstract Action gameFunction();
 	
 	/* General Function to represent taking damage
 	 * 		Expected inputs: a real interger for damage, non negative

@@ -1,7 +1,12 @@
 import java.io.*;
 import java.util.ArrayList;
 
-
+/**
+ * The main engine of the game, which handles the logic and data manipulation. In effect, the model in traditional model-view-controller paradigm.
+ * 
+ * @author James, zoha mehdi
+ *
+ */
 public class Game {
 	private Parser parser; 
 	Game PvZ;
@@ -263,6 +268,27 @@ public class Game {
 	  }
   }
 	  
+  /*
+   * Function that ticks every in game turn to interate over all current tiles to acquire game actions.
+   */
+  public void turnTick() {
+	  int laneIndex, depthIndex;
+	  laneIndex = 0;
+	  for(ArrayList<GameEntity> lane:lawn) {
+		  depthIndex = 0;
+		  for(GameEntity obj:lane) {
+			  if(obj != null) {
+				  handleAction(obj.gameFunction(), laneIndex, depthIndex, obj);
+				  depthIndex++;
+			  }
+		   laneIndex++;
+		  }
+	  }
+  }
+  
+  private void handleAction(Action command, int lane, int depth, GameEntity caller) {
+	  
+  }
 	  
    public void loseGame() {
     	System.out.println("Oops! You lost the Game");
@@ -325,25 +351,8 @@ public class Game {
 
 	@SuppressWarnings("resource")
 	public static void main(String[] args){
-
 		Game f = new Game();
 		f.createEnemy();
-		/**while(enemy.isEmpty() == false) {
-
-			System.out.println("Commands");
-			System.out.println("drop sunflower");
-			System.out.println("drop peashooter");
-			System.out.println("shoot");
-			System.out.println(" ");
-
-			Scanner br = new Scanner(System.in);
-
-			
-			String name ;
-			name = br.nextLine();
-			//f.action(name);
-			 */
-		
-			f.play();
+		f.play();
 	}
 }

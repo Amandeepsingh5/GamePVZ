@@ -1,7 +1,7 @@
 
 public interface GameEntity {
 
-	public void gameFunction();
+	public Action gameFunction();//Create a action class to pass back to caller
 	public void takeDamage(int damage);
 	
 }

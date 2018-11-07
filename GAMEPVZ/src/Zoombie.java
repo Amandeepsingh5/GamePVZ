@@ -43,8 +43,8 @@ public class Zoombie implements GameEntity {
 		
 	}
 	
-	public void gameFunction() {
-		
+	public Action gameFunction(){
+		return null;
 	}
 	
 	
