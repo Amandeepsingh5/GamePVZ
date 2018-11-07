@@ -39,6 +39,6 @@ public abstract class Plant implements GameEntity{
 	
 	
 	public void die() {
-		//owner.removeObject(this);
+		owner.removeEntity(this);
 	}
 }

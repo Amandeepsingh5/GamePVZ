@@ -300,6 +300,19 @@ public class Game {
 	  }
   }
   
+  /*
+   * Generic Code to remove an Entity by it's reference
+   */
+  public void removeEntity(GameEntity in) {
+	  for(ArrayList<GameEntity> lane:lawn) {
+		  for(GameEntity obj: lane) {
+			  if(obj == in) {
+				  obj = null
+			  }
+		  }
+	  }
+  	}
+  
 	  /*Legacy Code
    public void loseGame() {
     	System.out.println("Oops! You lost the Game");
