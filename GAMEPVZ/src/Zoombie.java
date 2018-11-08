@@ -1,5 +1,8 @@
 import java.util.*;
 
+import model.Character;
+import model.Level;
+
 /**
  * This class creates different type of Zombies
  * 
@@ -38,6 +41,25 @@ public class Zoombie {
 	
 	public void attack(Zoombie zoombie, int health) {
 		zoombie.decrementHealth(attack);
+	}
+protected abstract void attack(Character Character);
+	 protected int move(Level grid) {
+		
+		 if(grid.fieldDimension(x-1, y)){
+			if(grid.plantAt(this.x - 1, this.y)){
+				return 0;
+			}
+			else {
+				
+				this.x = this.x -1;
+				
+				
+				return 1;
+			}
+		 }
+		 else{
+			 return -1;
+		 }
 	}
 	
 	
