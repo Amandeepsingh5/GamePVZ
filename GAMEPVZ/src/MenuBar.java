@@ -31,7 +31,7 @@ public class MenuBar {
 			mainMenu.add(newLevel);
 
 			 
-			loadGame = new JMenuItem("Load");
+			
 			mainMenu.add(startGame);
 			mainMenu.add(closeGame);
 		
@@ -43,19 +43,16 @@ public class MenuBar {
 		closeGame.addActionListener(c);
 		newLevel.addActionListener(c);
 	}
-	public JMenuItem getLoadGame(){
-		return loadGame;
-	}
 	
 	public JMenuItem getStartGame(){
-		return startGame;
+		return startGame; //works fine
 	}
 	
 	public JMenuItem getCloseGame(){
-		return closeGame;
+		return closeGame; //works fine
 	}
 	public JMenuItem getNewLevel(){
-		return newLevel;
+		return newLevel; // couldnt get this one either
 	}
 	public JMenuBar getMenuBar(){
 		return menuBar;
