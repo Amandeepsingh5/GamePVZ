@@ -11,29 +11,28 @@ import javax.swing.*;
 import controller.Controller;
 
 public class mainFrame extends JFrame implements Observer{
-	private static final int WINDOW_WIDTH = 1024;
+	private static final int WINDOW_WIDTH = 1024; // size of the window when opens
 	private static final int WINDOW_HEIGHT = 768;
 	
 	
-	private  JPanel mainPanel;
-	private  JPanel statusPanel;
-	private zombiePanel buildPanel;
-	private gamePanel main;
+	private  JPanel mainPanel; // the main panel
+	private  JPanel statusPanel; // the sun points shown in the statusPanel
+	private zombiePanel buildPanel; // Zombie panel that launches the zombies
+	private gamePanel main; // the main game panel that has grid
 
-	private JFrame frame;
-	
-	private boolean builderMode;			//maybe pointless?
+	private JFrame frame; // main frame
+
 	
 	public mainFrame(){
 	
 		//Initializing the panels
-		mainPanel = new JPanel();		
+		mainPanel = new JPanel();	//initialize	
 		statusPanel = new JPanel();
 		buildPanel = new zombiePanel();
 		main = new gamePanel();
 		
 		mainPanel.setLayout(new BorderLayout(40,5));
-		statusPanel.setLayout(new FlowLayout());
+		statusPanel.setLayout(new FlowLayout()); //set layout
 		
 		
 		
@@ -55,11 +54,11 @@ public class mainFrame extends JFrame implements Observer{
 	}
 	
 	public void addAction(Controller c){
-		buildPanel.addAction(c);
+		buildPanel.addAction(c); // add controller
 	}
 	
 	public JButton[] getZombies() {
-		return buildPanel.getZombies();
+		return buildPanel.getZombies(); // get zombies
 	}
 	
 	
