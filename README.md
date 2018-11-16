@@ -41,4 +41,9 @@ MODEL PACKAGE: The model  package contains of the model class that deals with me
 
 VIEW PACKAGE: contains the classes that act as different panel for the main FRAME. The Plant panel contains the JButton for the sunflower, the peashooter. The MenuBar class contains the menubar for the frame that conatins new level, new and exit where new level doesn't work. The mainPanel class contains the grid layout for the game. The mainframe class contains where we add all the panels, gamePanel,statusPanel and other panels and set their layout.The view class is the main class that contains all the main Jframe that contains the grid and the plants the menuBar and the status Panel containing the sunPoints.
 
-Controller : Contains only the controller class is reponsible to handle all the events  caused by the view using the MVC style.
+CONTROLLER PACKAGE : Contains only the controller class is reponsible to handle all the events  caused by the view using the MVC style.
+
+HOW TO USE THE GAME: As previously mentioned we the new Level doesn't work , so as we run the game, we see the newLevel. So ,we have to go to the MenuBar and click on the new which would start the new game. Then, we can add plants and peashooters to the field while the zombies enter the field. We inititally start with 10 sunPoints then further move to as we buy the sunflower we get hike in points and 
+further we have with every 3 turns we get hike of some points. We can both LOSE and WIN the Game.
+
+
