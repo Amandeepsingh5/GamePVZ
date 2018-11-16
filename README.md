@@ -22,7 +22,7 @@ Toluwalope Ajisola: Commenting, indentatation and refactoring issues of the code
 
 James Desorsiers: Sequence Diagrams.
 
-The ZIP file contains the contains the a jar file that contains the code which is further on divided into different packages of 
+The ZIP file contains  the a jar file that contains the code which is further on divided into different packages of 
 classes acting as VIEW, classes acting as MODEL, the contoller package consists of the controller class, tests for testing the sunflower
 class, peashooter class, level class, Explosive Zombie class. The ZIP file also contains the class diagram and the sequence diagrams under the 
 diagrams folder.
