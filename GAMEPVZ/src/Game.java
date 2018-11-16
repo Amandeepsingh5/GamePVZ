@@ -14,6 +14,8 @@ import java.util.ArrayList;
  *So, Everytime we get a SunFlower we get 150 sun points.
  *
  */
+
+
 public class Game {
 	private Parser parser; // creating a Parser instance
 	Game PvZ; // creating the Game instance
@@ -30,7 +32,6 @@ public class Game {
 	public Game() {
 		PvZ.enemy = new ArrayList<Zoombie>(); // create a arraylist of zombies 
 		parser = new Parser();  //initialize the parser object 
-		
 	}
 	
 
@@ -135,7 +136,6 @@ public class Game {
   			System.out.println(" ");
   			sun -=150;
   			System.out.println("Cherry Bomb bursted, All Zombies Dead! Move to level 2");
-  		
   		}else {
   			System.out.println("Not enough sunpoints to Buy CherryBomb");
   			System.out.println(" ");
@@ -170,7 +170,6 @@ public class Game {
    public void currPoints() {
 		System.out.println("      ---------------------------------------------" );
 		System.out.println("           CURRENT STATUS OF THE GAME          " );
-		
 		System.out.println("           Current Sun points : "  + this.sun);
 		System.out.println("           Current Pea Shooters on the grass : "  + this.peaShooter);
 		System.out.println("           Current Sun Flowers on the grass : " + this.sunFlower);
@@ -227,55 +226,56 @@ public class Game {
    */
   public void shoot() {
 	 
-	  if ((peaShooter > enemy.size() && enemy.size() > 0) && !(enemy.size()==0)) { // these conditions decide whether we win or lose the game
-		  enemy.remove(0); //remove enemy
-		  System.out.println("Zombie dead");
-		  peaShooter -= 1; // decrease peaShooter
+	  if ((peaShooter > enemy.size() && enemy.size() > 0) && !(enemy.size()==0)) { //This condition is applied untill peashooters size is greater than the enemy size
+		  enemy.remove(0); //remove enemy                                      // and zombies are still present in the field. This condition is only applied if the peeshooter present in the field
+		  System.out.println("Zombie dead");                                   // are more than the zoombies present before the user types in 'shoot' command.
+		  peaShooter -= 1; // decrease peaShooter                              // If this condition is applied than the user will surely win the game.
 		  countZombie();
 		  }  
 	  else if(peaShooter >= 0 && yardMower>=0 && enemy.size()==0) {
-		  System.out.println("You win the game. Move to Level 2"); // when all the zombies are killed(zero) and we are still left with peashooter and yardmower
-		  // We win the game
-	  }
-	  else if ((peaShooter <=3 && peaShooter >0) && yardMower ==3) {
-		    while(peaShooter >= 1) {
-		    	enemy.remove(0);
-				System.out.println("Zombie dead");
-				peaShooter -=1;
-				countZombie();
-				System.out.println(" ");
+		  System.out.println("You win the game. Move to Level 2"); //This condition is only applied once all the zoombies are dead
+	  }                                                                // but the peeshooter and yardmover are still presnt in the game. 
+	                                                                   // This is the last condition that runs to win the game when user types in 'hoot'again
+	                                                                   //This condition is used to let the user know that he have finally won the game.
+	  
+	  else if ((peaShooter <=3 && peaShooter >0) && yardMower ==3) { // This condition comes into play when the peashooter present are 3 or less
+		    while(peaShooter >= 1) {                             // but the yardmower is still 3. This condition is applied in both loose and win case
+		    	enemy.remove(0);                                 // If the peashooter are 2 or less and the user doesnt buy anymore peashooter, than 
+				System.out.println("Zombie dead");       // the user will loode the game as all the lawnmower will be used which means there will
+				peaShooter -=1;                          // be no peashooter or lawnmower lft to protect the field;thus, we loose the game.
+				countZombie();                           // Once all the peashooters are used the next condition right below it
+				System.out.println(" ");                 // will be applied to use the lawnmowers to kill the zoombies.
 		    }
 
 	  }
-	  else if((peaShooter ==0 && yardMower > 0) && enemy.size() > 0) { // 
-
-		    enemy.remove(0);
-			System.out.println("Zombie dead");
+	  else if((peaShooter ==0 && yardMower > 0) && enemy.size() > 0) { //This condition will be applied once all the peeshooters are
+		    enemy.remove(0);                                        //dead and just the lawnmowers are left to kill the remaining zoombies
+			System.out.println("Zombie dead");                 //If all zoombies are dead an landmower left are 0 or more; therefore, we win the game else we loose the game
 			yardMower -= 1;
 			countZombie();
 			System.out.println(" ");
-	  }else if ((peaShooter >3 && peaShooter <=6) && yardMower > 0) {
-				enemy.remove(0);
+	  }else if ((peaShooter >3 && peaShooter <=6) && yardMower > 0) { // This condition is only applied if we have peaShooter greater than 3
+				enemy.remove(0);                          // but less than or equal to 6. This condition means we will win the game.
 				System.out.println("Zombie dead");
 				peaShooter -=1;
 				countZombie();
 				System.out.println(" ");
-	  } else if ((peaShooter <=2 )) {
-		  while(peaShooter > 0) {
-			  enemy.remove(0);
+	  } else if ((peaShooter <=2 )) { // This condition is applied if the remaining peashooters on the game are less than or equal to 2. This condition will
+		  while(peaShooter > 0) { // lead the user to loose the game as all the lawnmower and peashooter would be used but still one or more zoombies would be
+			  enemy.remove(0); //left on the field not dead.
 				System.out.println("Zombie dead");
 				peaShooter -=1;
 				countZombie();
 				System.out.println(" ");
 		  }
-		  while(yardMower == 3 && peaShooter == 0) {
-			  enemy.remove(0);
+		  while(yardMower == 3 && peaShooter == 0) { // This condition will let lawnmowers to kill zoombies present in the field.
+			  enemy.remove(0);                   // utill all the lawnmowers are used; thus, we loose the game.
 				System.out.println("Zombie dead");
 				yardMower -=1;
 				countZombie();
 				System.out.println(" ");
 		  }
-		  loseGame();
+		  loseGame(); // This method is called once the user doesnot have any peashooter or lawnmowers left to save the field and zoombies are still present in the field.
 
 	  }
 	  
@@ -308,10 +308,7 @@ public class Game {
 	  System.out.println("      -------------------------------------------------" );
 	  System.out.println("            Current Number of Zombies in the Grass:  " + enemy.size());  // number of zombies
 	  System.out.println("            Current Number of Peashooter in the Grass:  " + this.peaShooter); // number of peashooters
-	  System.out.println("            Current Number of yardMower in the Grass:" + this.yardMower); //number of yardmowers
-
-    
- 
+	  System.out.println("            Current Number of yardMower in the Grass:" + this.yardMower); //number of yardmower
 	  System.out.println("      --------------------------------------------------" );
   }
   /*
@@ -347,14 +344,12 @@ public class Game {
       this.peaShooter =0;
       this.sunFlower=0;
       zombie = new BasicZoombie();
-      
-
-		for(int i=enemy.size() -1; i >= 0;i--) {
+      for(int i=enemy.size() -1; i >= 0;i--) {
 			Game.enemy.remove(i); // removing the zombies from the old lost game and then putting back 6 zombies in the game as we are replaying the game
 		}
-      zombie = new BasicZoombie();
+                zombie = new BasicZoombie();
       
-		for(int i=0; i < 6;i++) {
+      for(int i=0; i < 6;i++) {
 			Game.enemy.add(zombie); //adding the 6 zombies to the field for the replay version of the game
 		}
       currPoints(); // Give current status of the Game
@@ -364,9 +359,7 @@ public class Game {
       while (! finished) {
           Command command = parser.getCommand();
           finished = processCommand(command);
-
       }
-      
       play();
   }
 
