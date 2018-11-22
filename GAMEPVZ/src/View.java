@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.io.File;
 import java.util.Observable;
@@ -19,55 +18,62 @@ import model.Model;
 import controller.Controller;
 
 
+
 public class View extends JFrame implements Observer {
-	private static final int WINDOW_WIDTH = 1024;
-	private static final int WINDOW_HEIGHT = 768;
+	private static final int WIDTH = 1024;
+	private static final int HEIGHT = 768;
+	
+	
 	private  JPanel mainPanel;
 	private  JPanel statusPanel;
+	
 	private PlantPanel sunFlowerPanel;
+	
 
 	private JLabel money;
 
+	
 	static private final String newline = "\n";
 	
-	private MenuBar mainMenu;
+	JFileChooser fc;
 	
-	private mainPanel grid;
+	private MenuBar MenuBar;
+	
+	private mainPanel gridPanel;
 	//private ZombieSelectPanel buildPanel;
-	//private BuildmainPanel workingView;
+	//private BuildGamePanel workingView;
 
 	private JFrame frame;
 	
-	private boolean builderMode;			//maybe pointless?
+	private boolean builderMode;			
 	
 	public View(){
 		money =  new JLabel("Sun Power = 0");
-		money.setForeground(Color.RED);
 		
 		//Initializing the panels
-		mainPanel = new JPanel();	
+		mainPanel = new JPanel();		
 		sunFlowerPanel = new PlantPanel();
-
-		grid = new mainPanel();		
+	
+		gridPanel = new mainPanel();		
 		statusPanel = new JPanel();
 		//buildPanel = new ZombieSelectPanel();
-		//workingView = new BuildmainPanel();
+		//workingView = new BuildGamePanel();
 		statusPanel.add(money);
+		fc = new JFileChooser();
 		mainPanel.setLayout(new BorderLayout(40,5));
 		statusPanel.setLayout(new FlowLayout());
 		
 		//adding panels to the main pane
-		mainPanel.add(grid.getgrid(), BorderLayout.CENTER);
-		mainPanel.add(sunFlowerPanel.getSunFlowerPanel(), BorderLayout.NORTH);
-		
-		mainPanel.add(statusPanel, BorderLayout.SOUTH);
+		mainPanel.add(gridPanel.getGridPanel(), BorderLayout.CENTER);
+		mainPanel.add(sunFlowerPanel.getSunFlowerPanel(), BorderLayout.WEST);
+			mainPanel.add(statusPanel, BorderLayout.SOUTH);
 
-		mainMenu = new MenuBar();
+		MenuBar = new MenuBar();
 		
-		frame = new JFrame("Plants Vs Zombies");
-		frame.setJMenuBar(mainMenu.getMenuBar());
+		frame = new JFrame("PlantsVsZombies");
+		frame.setJMenuBar(MenuBar.getMenuBar());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
+		frame.setSize(WIDTH,HEIGHT);
 		
 		frame.setContentPane(mainPanel);
 		frame.setVisible(true);
@@ -83,10 +89,10 @@ public class View extends JFrame implements Observer {
 	public void update(Observable o, Object arg) {		
 		if(!builderMode){
 			//update the sun money
-			money.setText("Sun Power = " + ((Model)o).getSolarPower());
+			money.setText("Sun Power = " + ((Model)o).getsunPoints());
 			//initialize the first level view
 			sunFlowerPanel.update(o);
-			grid.update(o);
+			gridPanel.update(o);
 		}
 		else{
 			//workingView.update(o);
@@ -98,8 +104,8 @@ public class View extends JFrame implements Observer {
 	 * @param c -c is the controller object that is assigned to listen to this object instances GUI components.
 	 */
 	public void addAction(Controller c){
-		mainMenu.addAction(c);	   
-		grid.action(c);		
+		MenuBar.addAction(c);	   
+		gridPanel.addAction(c);		
 		
 		sunFlowerPanel.addAction(c);
 	}
@@ -118,7 +124,7 @@ public class View extends JFrame implements Observer {
 	 */
 	public JMenuItem getNewGame()
 	{
-		return mainMenu.getStartGame();
+		return MenuBar.getStartingGame();
 	}
 	/**
 	 * Return closeGame JMenuItem.
@@ -126,11 +132,11 @@ public class View extends JFrame implements Observer {
 	 */
 	public JMenuItem getExitGame()
 	{
-		return mainMenu.getCloseGame();
+		return MenuBar.getClosingGame();
 	}
 	
 	public JMenuItem getNewLevel(){
-		return mainMenu.getNewLevel();
+		return MenuBar.getNewLevel();
 	}
 	
 	/**
@@ -139,7 +145,7 @@ public class View extends JFrame implements Observer {
 	 */
 	public JButton[][] getGridList()
 	{
-		return grid.getB();
+		return gridPanel.getB();
 	}
 	/**
 	 *  Returns the plants available to choose from.
@@ -149,11 +155,16 @@ public class View extends JFrame implements Observer {
 	{
 		return sunFlowerPanel.getPlants();
 	}
-	public JMenuItem getLoadGame(){
-		return mainMenu.getLoadGame();
+	
+	
+	public JButton getUndo(){
+		return sunFlowerPanel.getUndoButton();
 	}
 	
-	
+	public JButton getRedo(){
+		return sunFlowerPanel.getRedoButton();
+	}
+
 	
 	/**
 	 * Lays out the game for playing
@@ -164,10 +175,10 @@ public class View extends JFrame implements Observer {
 		mainPanel.removeAll();
 		builderMode = false;
 		//adding panels to the main pane
-		mainPanel.add(grid.getgrid(), BorderLayout.CENTER);
-		mainPanel.add(sunFlowerPanel.getSunFlowerPanel(), BorderLayout.NORTH);
-		
-		mainPanel.add(statusPanel, BorderLayout.SOUTH);
+		mainPanel.add(gridPanel.getGridPanel(), BorderLayout.CENTER);
+		mainPanel.add(sunFlowerPanel.getSunFlowerPanel(), BorderLayout.SOUTH);
+	
+		mainPanel.add(statusPanel, BorderLayout.NORTH);
 		
 	}
 	
@@ -183,9 +194,42 @@ public class View extends JFrame implements Observer {
 		builderMode = true;
 		//adding panels to the main pane
 		//mainPanel.add(buildPanel.getGraveyardPanel(), BorderLayout.SOUTH);
-		//mainPanel.add(workingView.getgrid(), BorderLayout.NORTH);
+		//mainPanel.add(workingView.getGridPanel(), BorderLayout.NORTH);
 		
 	}
+
+	public File actionOpenFile()
+	{
+
+
+
+        //Handle open button action.
+            int returnVal = fc.showOpenDialog(View.this);
+ 
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                return file;
+                //This is where a real application would open the file.
+            } 
+        //Handle save button action.
+			return null;
+        
+	}
+	public File actionSaveFile()
+	{
+            int returnVal = fc.showSaveDialog(View.this);
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                return file;
+                //This is where a real application would save the file.
+              
+            }
+        
+		return null;
+		
+	}
+
+	
 	public boolean isBuilderMode(){
 		return builderMode;
 	}
