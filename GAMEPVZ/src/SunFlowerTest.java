@@ -1,6 +1,3 @@
-/**
- * 
- */
 package tests;
 import static org.junit.Assert.*;
 
@@ -28,9 +25,6 @@ public class SunFlowerTest {
 		
 	}
 
-	/**
-	 * Test method for {@link model.SunFlower#act()}.
-	 */
 	@Test
 	public void testAct() {
 		assertTrue(sunflower.action(level) == 5);
