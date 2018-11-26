@@ -9,7 +9,7 @@ The program must work robustly, and the code must be “smell-free” (we will b
 hunting for smells!). Make sure that you document the changes since the last
 iteration, and the reason for those changes.
 
-• Deadline: Monday November 18th. Weight: 30% of the overall project grade. 
+• Deadline: Monday November 25th. Weight: 30% of the overall project grade. 
 Group 6:
 
 Amandeep Singh: Coding for Model,Controller classes readme file , class diagrams.
