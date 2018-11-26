@@ -46,6 +46,7 @@ CONTROLLER PACKAGE : Contains only the controller class is responsible to handle
 TESTS PACKAGE: The tests package contains all the valid tests for  the different kinds of plants and the zombies.
 
 The User Visible changes for the game:Are the new buttons for the UNDO and REDO button , the skipTurn button and the different kind of plants like the button for walnut and snowshooter added to the Plant Panel on the left side of the screen of the game.
+The Class diagrams differs a bit from milestone 2, as we have added the new undoRedo class in the MODEL package which deals with the undo and redo feature implementation. The new plants and zombies that have been added to the game are also the part of the new UML class diagram.
 
 The Roadmap ahead for the game is to fix some random occurring errors in the code, and implementing the level builder and the SAVE/LOAD features for the game.
 
