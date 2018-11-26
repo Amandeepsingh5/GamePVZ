@@ -6,15 +6,15 @@ import model.ExplosiveZombie;
 import model.Level;
 import model.PeaShooter;
 
-import model.Zombie;
+
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class LevelTest {
-	Zombie zombieA;
-	Zombie zombieB;
-	Zombie zombieC;
+	ExplosiveZombie zombieA;
+	ExplosiveZombie zombieB;
+	ExplosiveZombie zombieC;
 	PeaShooter peashooterA;
 	PeaShooter peashooterB;
 	Level end;
@@ -34,8 +34,8 @@ public class LevelTest {
 		assert(end.addChar(zombieA, 0, 0));
 		assert(end.CharacterAt(0, 0));
 		assert(!end.CharacterAt(1, 0));
-		assert(end.loc_Zombie(0, 0));
-		assert(!end.loc_Zombie(1, 0));
+		assert(end.loc_zombie(0, 0));
+		assert(!end.loc_zombie(1, 0));
 		assert(end.addChar(zombieB, 1, 0));
 		assert(end.addChar(zombieC, 0, 0));
 		assert(end.getCharacterAt(1, 0) == zombieB);
