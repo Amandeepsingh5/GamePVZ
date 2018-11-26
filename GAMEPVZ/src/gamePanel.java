@@ -1,48 +1,81 @@
 package view;
-import model.Model;
-import model.CreateLevel;
-import controller.Controller;
 
-
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
-import model.Character;
+import controller.Controller;
+
+@SuppressWarnings("serial")
+public class mainFrame extends JFrame implements Observer{
+	private static final int WIDTH = 1024;
+	private static final int HEIGHT = 768;
 
 
-public class gamePanel extends mainPanel implements Observer {
-	
+	private  JPanel mainPanel;
+	private  JPanel statusPanel;
+
+	private ZombiePanel buildPanel;
+
+	private gamePanel main;
+
+	private JFrame frame;
+
+	@SuppressWarnings("unused")
+	private boolean Mode;			
+
+	public mainFrame(){
+
+		//Initializing the panels
+		mainPanel = new JPanel();		
+		statusPanel = new JPanel();
+		buildPanel = new ZombiePanel();
+		main = new gamePanel();
+
+		mainPanel.setLayout(new BorderLayout(40,5));
+		statusPanel.setLayout(new FlowLayout());
+
+		//adding panels to the main pane
+		mainPanel.add(statusPanel, BorderLayout.NORTH);
+		frame = new JFrame("PlantsVSZombies");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(WIDTH,HEIGHT);
+
+		frame.setContentPane(mainPanel);
+		frame.setVisible(true);
+
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		main.update(o, arg);
+
+	}
+
+	/**
+	 * Adds the actionlistener controller c to the GUI components.
+	 * @param c -c is the controller object that is assigned to listen to this object instances GUI components.
+	 */
 	public void addAction(Controller c){
-		
-		//the buttons do nothing
+		buildPanel.addAction(c);
 	}
-	
-public void update(Observable arg0, Object arg1) {
-		int x=0;
-		int y=0;
 
-		CreateLevel newLevel = ((CreateLevel)arg0);
-		
-		//draw each Character added to the level
-		for(Character a: newLevel.showLevel().getCharacterList()){
-			if(newLevel.showLevel().fieldDimension(x, y)){
-				
-				super.buttons[y][x].setIcon(new ImageIcon(a.getPicture()));
-				
-			}
-			x++;
-			
-			if(x > newLevel.showLevel().getMaxX()){
-				x = 0;
-				y++;
-				if(y > newLevel.showLevel().getMaxY()){
-					y = 0;
-				}
-			}
-		}
-		
+	/**
+	 * Returns the zombies button from the ZombiePanel class
+	 * @return JButton[] -Returns a JButton 
+	 */
+	public JButton[] getZombies() {
+		return buildPanel.Zombies();
 	}
-	
+
+	/**
+	 * Return undoButton button from the ZombiePanel class.
+	 * @return JButton - returns a button
+	 */
+	public JButton Undo(){
+		return buildPanel.getUndoButton();
+	}
 }
