@@ -27,7 +27,7 @@ class, Peashooter class, level class,Basic zombie class, getPlant class, Polezom
 diagrams folder.
 The new sequence diagrams for the controller class and  undo, redo feature have been added to this milestone other than the other old diagrams from the milestone 2 which have the same implementation in milestone 3 as well.
 
-Different kinds of datastructures have been used for the Milestone.Including Arraylist that contains the Zombies,the types of the character and many more.
+Different kinds of datastructures have been used for the Milestone.Including Arraylist that contains the Zombies,for storing different kind of characters in the game.
 We have also used the cloneable and serialization interfaces because When you use some marker interface(no method implementation ) you want to tell jvm or compiler for adding or checking something during runtime or compile time. 
 
 The Previous design for the milestone 1 has the console game of the version which was using the classes like commandwords and were missing classes like peashooter, sunflowers.
@@ -42,6 +42,10 @@ MODEL PACKAGE: The model  package contains of the model class that deals with me
 VIEW PACKAGE: contains the classes that act as different panel for the main FRAME. The Plant panel contains the JButton for the sunflower, the peashooter. The MenuBar class contains the menubar for the frame that conatins new level, new and exit where new level doesn't work. The mainPanel class contains the grid layout for the game. The mainframe class contains where we add all the panels, gamePanel,statusPanel and other panels and set their layout.The view class is the main class that contains all the main Jframe that contains the grid and the plants the menuBar and the status Panel containing the sunPoints.The View package the contains the almost the same code as milestone 2 except the new buttons for the undo,redo and the skipTurn have been added to the game.
 
 CONTROLLER PACKAGE : Contains only the controller class is responsible to handle all the events  caused by the view using the MVC style. The undo,redo and skipturn features as methods have been added to the controller class to pass on the message to model, that we want to implement the following command.
+
+The User Visible changes for the game:Are the new buttons for the UNDO and REDO button , the skipTurn button and the different kind of plants like the button for walnut and snowshooter added to the Plant Panel on the left side of the screen of the game.
+
+The Roadmap ahead for the game is to fix some random occurring errors in the code, and implementing the level builder and the SAVE/LOAD features for the game.
 
 HOW TO USE THE GAME So ,we have to go to the MenuBar and click on the new which would start the new game. Then, we can add plants and peashooters to the field while the zombies enter the field. We initially start with 10 sunPoints then as we buy the sunflower we get hike in points and 
 we have with every 3 turns we get hike of some sun points. We can both LOSE and WIN the Game.
