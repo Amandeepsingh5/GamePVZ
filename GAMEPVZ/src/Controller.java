@@ -1,16 +1,13 @@
 package controller;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
-
-import view.View;
-import view.mainFrame;
 import model.CreateLevel;
 import model.Model;
-
-
+import view.mainFrame;
+import view.View;
 
 @SuppressWarnings("unused")
 public class Controller implements ActionListener{
@@ -46,22 +43,10 @@ public class Controller implements ActionListener{
 			model.notifyObservers();
 		}
 		else if (e.getSource() == view.getExitGame()){
+			
 			view.dispose();
+			
 			System.exit(0);
-		}
-		else if (e.getSource() == view.getNewLevel()){
-			System.out.println("New Level Selected");
-			if(!view.isBuilderMode()){
-				view.switchToBuildMode();
-				if(createView== null){
-					createView= new mainFrame();
-					createView.addAction(this);
-				}
-				if(newLevel == null){
-					newLevel = new CreateLevel(1);
-					newLevel.addObserver(createView);
-				}
-			}
 		}
 		if(model!=null){
 			if(e.getSource() == view.getSkipTurn())
@@ -73,31 +58,54 @@ public class Controller implements ActionListener{
 					e1.printStackTrace();
 				}
 			}
-			
-			
-			else if(e.getSource() == view.getLoadGame()){
-				
+			else if(e.getSource() == view.getUndo()){			
+				model.undo();
 			}
+			else if(e.getSource() == view.getRedo()){
+				model.redo();
+			}
+			
 			else{
-				if(newLevel != null && createView!= null){
-					for(int zomb=0; zomb<createView.getZombies().length; zomb++){
-						if(e.getSource() == createView.getZombies()[zomb] ){
+				if(newLevel != null && createView != null){
+					for(int zombInd=0; zombInd<createView.getZombies().length; zombInd++){
+						if(e.getSource() == createView.getZombies()[zombInd] ){
+							switch(zombInd){
+								case 0:
+									newLevel.putZombie("BasicZombie");
+									break;
+								case 1:
 									newLevel.putZombie("ExplosiveZombie");
+									break;
+								case 2:
+									newLevel.putZombie("PoleZombie");
+									break;
+								default:
+									break;
+							}
 						}
 					}
 				
-					
+					if(e.getSource() == createView.Undo()){
+						newLevel.takeZombie();
+					}
 				}
 				
-				for(int plant=0; plant<view.getPlantsList().length;plant++){
-					if(e.getSource() == view.getPlantsList()[plant] ){
-						switch(plant){
+				for(int plantInd=0; plantInd<view.getPlantsList().length;plantInd++){
+					if(e.getSource() == view.getPlantsList()[plantInd] ){
+						switch(plantInd){
 							case 0:
 								model.setChoice("sunflower");
 								break;
 							case 1:
 								model.setChoice("shooter");
 								break;
+							case 2:
+								model.setChoice("snowshooter");
+								break;
+							case 3:
+								model.setChoice("walnut");
+								break;
+							
 							default:
 								model.setChoice(null);
 								break;
@@ -108,26 +116,26 @@ public class Controller implements ActionListener{
 				for(int row = 0; row < view.getGridList().length; row++){
 					for(int col = 0; col<view.getGridList()[row].length; col++ ){
 						if(e.getSource() == view.getGridList()[row][col] )	{
-							if(model.Choice()!=null)	{
-								if(model.placePlant(col, row, model.Choice())){
+							if(model.getChoice()!=null)	{
+								if(model.placePlant(col, row, model.getChoice())){
 									try {
 										model.update();
 									} catch (CloneNotSupportedException e1) {
 										e1.printStackTrace();
-									} 
+									}
 								}
 							}
 						}
 					}
 				}
 			}
-			if(model.statusOfGame() == 1){
-            System.out.println("WON.");
-            //TODO advance level here
+        if(model.state() == 1){
+            System.out.println("WON");
+           
             System.exit(0);
         }
-        else if(model.statusOfGame() == -1){
-            System.out.println("LOST.");
+        else if(model.state() == -1){
+            System.out.println("LOST");
             System.exit(0);
         }
     
