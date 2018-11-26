@@ -1,7 +1,4 @@
-/**
- * 
- */
-package tests;
+\package tests;
 
 
 import static org.junit.Assert.*;
@@ -34,19 +31,25 @@ public class GetPlantTest {
 	 */
 	@Test
 	public void testGetPlant() {
-		Plant actor = plant.getPlant("sunflower", 5);
-		assertFalse(actor == null);
-		assertTrue(actor instanceof SunFlower);
+		Plant character = plant.getPlant("sunflower", 5);
+		assertFalse(character == null);
+		assertTrue(character instanceof SunFlower);
 		
-		actor = plant.getPlant("sunflower", -2);
-		assertTrue(actor == null);
+		character = plant.getPlant("sunflower", -2);
+		assertTrue(character == null);
 		
-		actor = plant.getPlant("shooter", 6);
-		assertFalse(actor == null);
-		assertTrue(actor instanceof PeaShooter);
+		character = plant.getPlant("shooter", 6);
+		assertFalse(character == null);
+		assertTrue(character instanceof PeaShooter);
 		
-		actor = plant.getPlant("shooter", 0);
-		assertTrue(actor == null);
+		character = plant.getPlant("snowshooter", -7);
+		assertTrue(character == null);
+		
+		
+		character = plant.getPlant("WALNUT", -19);
+		assertTrue(character == null);
+		
 	}
 
 }
+
