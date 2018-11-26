@@ -50,7 +50,7 @@ The Class diagrams differs a bit from milestone 2, as we have added the new undo
 
 The Roadmap ahead for the game is to fix some random occurring errors in the code, and implementing the level builder and the SAVE/LOAD features for the game.
 
-HOW TO USE THE GAME So ,we have to go to the MenuBar and click on the new which would start the new game. Then, we can add plants and peashooters to the field while the zombies enter the field. We initially start with 10 sunPoints then as we buy the sunflower we get hike in points and 
+HOW TO USE THE GAME: So ,we have to go to the MenuBar and click on the new which would start the new game. Then, we can add plants and peashooters to the field while the zombies enter the field. We initially start with 10 sunPoints then as we buy the sunflower we get hike in points and 
 we have with every 3 turns we get hike of some sun points. We can both LOSE and WIN the Game.
 
 
