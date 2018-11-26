@@ -32,9 +32,8 @@ public class PeaShooterTest {
 		level.addChar(shooter, 0, 0);
 	}
 
-	/**
-	 * Test method for {@link model.Shooter#act()}.
-	 */
+	
+	
 	@Test
 	public void testNoShooting() {
 		assertTrue(shooter.action(level) == 0);
@@ -47,7 +46,7 @@ public class PeaShooterTest {
 	public void testAttack(){
 		level.addChar(zombie, 2, 0);
 		assertTrue(2 == shooter.action(level));
-		assertTrue(zombie.getCurrHealth() < zombie.getMaxHealth());
+		assertTrue(zombie.getcurrentHealth() < zombie.getmaximumHealth());
 	}
 
 }
