@@ -43,6 +43,8 @@ VIEW PACKAGE: contains the classes that act as different panel for the main FRAM
 
 CONTROLLER PACKAGE : Contains only the controller class is responsible to handle all the events  caused by the view using the MVC style. The undo,redo and skipturn features as methods have been added to the controller class to pass on the message to model, that we want to implement the following command.
 
+TESTS PACKAGE: The tests package contains all the valid tests for  the different kinds of plants and the zombies.
+
 The User Visible changes for the game:Are the new buttons for the UNDO and REDO button , the skipTurn button and the different kind of plants like the button for walnut and snowshooter added to the Plant Panel on the left side of the screen of the game.
 
 The Roadmap ahead for the game is to fix some random occurring errors in the code, and implementing the level builder and the SAVE/LOAD features for the game.
