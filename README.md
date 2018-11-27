@@ -1,191 +1,56 @@
-SYSC 3110 Project - Plants vs Zombies: the Puzzle! 
 
-MileStone1: In this milestone we have been asked to make a console version of the game (Plant Vs Zoombies) with the UML diagrams. It is an initial design and implementation of the model part of the MVC.
+Milestone 3:
 
-This project consist of four people as followed:
+Complete Implementation: fully-featured with various types of plants and
+zombies, and unlimited undo/redo feature.
 
-Zoha Mehdi - Coding (Initial design and implementation of plant VS Zoombie model class + Readme file)
+• Deliverables: readme file + code + refined tests + refined design + documentation.
+The program must work robustly, and the code must be “smell-free” (we will be
+hunting for smells!). Make sure that you document the changes since the last
+iteration, and the reason for those changes.
 
-Amandeep Singh - Coding (Initial design and implementation of plant VS Zoombie model class + commenting and indentation of the code)
+• Deadline: Monday November 25th. Weight: 30% of the overall project grade. 
 
-Toluwalope - UML diagram
+Group 6:
 
-James - UML diagram
+Amandeep Singh: Coding for Model,Controller classes readme file and class diagram.
 
-This project consists of 6 classes which work together to build up the console version of the game as listed below:
+Zoha Mehdi: Coding for View, Controller classes and writing the JUnit tests diagrams.
 
-BasicZoombie
+Toluwalope Ajisola: Commenting, indentatation and refactoring issues of the code.
 
-Command
+James Desorsiers: Sequence Diagrams.
 
-CommandWords
+The ZIP file contains  the a jar file that contains the code which is further on divided into different packages of 
+classes acting as VIEW, classes acting as MODEL, the controller package consists of the controller class, tests for testing the sunflower
+class, Peashooter class, level class,Basic zombie class, getPlant class, Polezombie class, Snowshooter class and Explosive Zombie class. The ZIP file also contains the class diagram and the sequence diagrams under the 
+diagrams folder.
+The new sequence diagrams for the controller class and  undo, redo feature have been added to this milestone other than the other old diagrams from the milestone 2 which have the same implementation in milestone 3 as well.
 
-Game
+Different kinds of datastructures have been used for the Milestone.Including Arraylist that contains the Zombies,for storing different kind of characters in the game.Inheritance has been used in the game for the plants the zombies. All the different Plants have a superclass which they extend to and the same is implemented for different kind of zombies as well.
+We have also used the cloneable and serialization interfaces because When you use some marker interface(no method implementation ) you want to tell jvm or compiler for adding or checking something during runtime or compile time. 
 
-Parser
+The Previous design for the milestone 1 consisted of the console game of the version which was using the classes like commandwords and were missing classes like peashooter, sunflowers.
+Milestone 2 contained the MVC design pattern for the plant and zombies which implements the step by step approach of the game instead of the real time version of the game.
+Milestone 3 resembles mostly all the classes from milestone 2, but with the addition of new kinds of plants and the zombies and the implementation of the undo /redo feature for the game moves. The code in milestone 2 had limited smelly code, and with good documentation  and design techniques we can aso say that our code is not smelly at this point of the game for the Milestone 3.We were trying new level option for the game in milestone 2, but it doesn’t work for now. So, for this part of the game we have moved out the new level option from the menuBar, which will come back in milestone 4. The Zombie health has also been moved from 1 shot from previous iteration to the 3 shots for the basic zombies, and the health factor has been added for the different zombies.
 
-Zoombie
+KNOWN ISSUES: The game works perfectly fine but it has some issues some random times like at the starting of the game, if we run out of the sun Points i.e. sun Points become 0 then the game is stuck neither we lose nor we can make a move to quit or lose. So, that’s a big known issue that we tackle when we run out of the sun Points. Another one, what we can say that is when we click on the skipTurn button the games stops for while and then depending on the number of the presses of the button the zombie takes a step but we can’t take kill the zombies. But, still we can reset the skip using the undo feature.
+Sometimes while playing the game 1/20 times or even less we get some random runtime error for the poleZombie, but still the polezombie and the game works fine. We are working on to figuring out that issue right now. As the zombies are randomly produced using the random number generator so sometimes the game acts a bit weird and the zombies come to the field very late whereas 9/10 times the game works perfectly fine and the zombies come on the field after putting approximately  4-5 sunflowers and 3-5 peashooters  on the field.
 
-The basic Zoobie class is used to give feature to one type of Zoombie found in level 1 of the game. This class extends the Zoombie class 
-where the features given to a particular zoombie are applied to it like health, power to attack and its description. Moreover the 
-Zoombie class also uses the getHealth() method to return the health of a particular Zoombie and also decrements the zoombies health when 
-it is attacked by the plants (Peashoter, Cherryboom).
+MODEL PACKAGE: The model  package contains of the model class that deals with methods that add zombie on the field , buying a plant,place a plant on the field after you bought it, check if the the zombies have reached the end and we lose the game or we killed all the zombies, returning the sun points , the returning at what level we are present right now. THe Character class is the another important class that has the common functions for both plants and zombies.Basically it acts as a superclass for all the plants and zombies. The Level class contains the data associated with the current level. Then the sunflower, plant, zombies,,explosive zombie class and zombie class that contains the different kind plant price, and the other methods related to plant and zombies.The Undoredo class deals with the implementation of the undo and redo and contains the undo / redo button, uses stack for the purpose of undoing the steps and redoing the steps. The Model class also contains the new plants that we added to the game as a part of milestone 3,Snowshooter and Walnut are the plants that we added to the game. Walnuts have hard shells which you can use to protect your other plants. The snowshooters shoot frozen peas that damage and slow the enemy. Different kinds of zombies added to the pvz game are Polezombie and explosive zombie.PoleZombie absorbs 340 damage per shot and he degrades upon absorbing 180 damage per shot before dying at 340 damage per shot. When he approaches most plants, Pole Vaulting Zombie will vault over the plant and abruptly lose his pole. His speed will become normal upon losing the pole.
 
-The command Class is used to hold information about a command that was given by the user like (DropSunflower, DropPeashooter etc..). In 
-this class a field of type String 'commandWord' is used to holds the command that the user assigns to do in the game. 
-The constructor in this class creates the object of the command where the command given by the user will be stored. A getCommandWord() 
-method is used to return the command that the user has asked to implement and if it is null than the result returned is also null. 
-Furthermore, isUnKnown() method is used to set the commandWord field to null if the command given by the user is not valid like not 
-understandable or false otherwise.
+VIEW PACKAGE: contains the classes that act as different panel for the main FRAME. The Plant panel contains the JButton for the sunflower, the peashooter. The MenuBar class contains the menubar for the frame that conatins new level, new and exit where new level doesn't work. The mainPanel class contains the grid layout for the game. The mainframe class contains where we add all the panels, gamePanel,statusPanel and other panels and set their layout.The view class is the main class that contains all the main Jframe that contains the grid and the plants the menuBar and the status Panel containing the sunPoints.The View package the contains the almost the same code as milestone 2 except the new buttons for the undo,redo and the skipTurn have been added to the game.
 
-The CommandWord class consists of an array used to hold all the valid command words that the user can use in this game. CommandWord 
-class lets the Command class know which commands are valid and which commands are not valid. If the command used by the user is not 
-found in the array containing the valid commands in CommandWord class than isKnown() method is implemented in the Command class to 
-assign null to the command given by the user as it is not understandable. The isCommand() method in CommandWord class is to used to 
-check that a given String is a valid command or not and getCommandList() method returns a list of all valid command.
+CONTROLLER PACKAGE : Contains only the controller class is responsible to handle all the events  caused by the view using the MVC style. The undo,redo and skipturn features as methods have been added to the controller class to pass on the message to model, that we want to implement the following command.
 
-The Parser class acts as an input class where it reads input from the user and tries to interpret that it is a valid command or not 
-using the commandWord class. It checks the validity of the command given by the user by checking the user input against the known command from commandWord class array. If it is valid than it carries on its job else it assigns null to it.
+TESTS PACKAGE: The tests package contains all the valid tests for  the different kinds of plants and the zombies.
 
-Game class is the one that uses all the other classes given above to implement the game. This class uses several methods to implement
-the game as listed below:
+The User Visible changes for the game:Are the new buttons for the UNDO and REDO button , the skipTurn button and the different kind of plants like the button for walnut and snowshooter added to the Plant Panel on the left side of the screen of the game.
+The Class diagrams differs a bit from milestone 2, as we have added the new undoRedo class in the MODEL package which deals with the undo and redo feature implementation. The new plants and zombies that have been added to the game are also the part of the new UML class diagram.
 
-PrintWelcome(),
+The Roadmap ahead for the game is to fix some random occurring errors in the code, and implementing the level builder and the SAVE/LOAD features for the game.
 
-gainSun(),
-
-ceateEnemy(),
-
-processCommand(),
-
-cherryBoob(),
-
-quit(),
-
-peaShooter(),
-
-sunflower(),
-
-shoot(),
-
-loseGame(),
-
-countZoombies(),
-
-play(),
-
-replay(),
-
-main(),
-
-currPoints()
-
-I would explain the Game class in such a way as if we are playing the game rightnow. First of all, whenever the user starts the game it 
-welcomes its users by implementing the welcome() method in Game class called by the main() and than the play() method within the main() method. When the welcome method is called the following is displayed on the console as shown below:
-
-Welcome to the World of PlantsVsZombies!
-
-Welcome to Adventure Level One.
-
-Type 'Sunpoints' if you want to gather the falling Sun Points.
-
-Type 'DropPeashooter' if you want to a Pea shooter on the grass.
-
-Type 'DropSunflower' if you want a Sunflower on the grass.
-
-Type 'Shoot' if you want to shoot a Zombie with Pea Shooter
- 
-Type 'Quit' if you want to quit.
-
-The welcome() method also gives instructions to the user of how to play this game like "Type 'Sunpoints'" to earn Sunpoints etc.. 
-Before the game starts a createEnemy() method is called in the main() method to create zoombies in our game before the round starts. 
-The createEnemy() method creates 6 zoombies to attack our house in the game.
-
-After the welcome() method is printed on the screen for the user to see at the same time the cuuPoints() method is also called to describe about the initial situation of the game as shown below:
-
- CURRENT STATUS OF THE GAME          
- 
- Current Sun points : 50
- 
- Current Pea Shooters on the grass : 0
- 
- Current Sun Flowers on the grass : 0
- 
- Current Number of Zombies on the grass: 6
- 
- It basically lets the user know that how many points does the user have at the begining of the game with how many zoombies, pea Shooter and sunflower are there on the field. Finally, Parser class is than used to take the input from the user of what the user wants to do next. All of this metioned above happens in the main() and play method(). So these are the methods used to just start the game. Now we are going to explain how the user plays the game.
- 
-If the user inputs 'Sunpoints', than processCommand() method in game class compares the command given by the user aginst the valid 
-command words stored in commandWord class to see if the command is valid. If the command is valid than the action related to the given 
-command is performed. As 'sunPoints' command is given by the user and as it is valid command; therefore, this command will call the 
-gainSun() method in Game class to gain 25 points for the user. The gainSun() method increses the points by 25 points whenever called. 
-The gainSun() method is just like collecting points falling from the sky as in the real game. The currpoint() method is than automatically called within the gainSun() method to show the user that how much points the user has earned by displaying the current situation of the game as shown below:
- 
- CURRENT STATUS OF THE GAME          
- 
- Current Sun points : 75
- 
- Current Pea Shooters on the grass : 0
- 
- Current Sun Flowers on the grass : 0
- 
- Current Number of Zombies on the grass: 6
- 
- As we can see above that the sun points just changed from 50 to 75 points. 
- After typing in the 'Sunpoints' command several times the user earns the desired number of points the user wants to earn. The user can 
- also buy a sunflower for 50 points by typing in the 'DropSunflower' command. The 'DropSunflower' command drops a sunflower on the field 
- and its function is to help user earn 100 points whenever it is dropped down on the field. Whenever 'DropSunflower' command is typed in 
- by the user the sunflower() method is called in the processCommand() method to implement its functions as described above and its        result are shown below as shown in the console while playing the game.
- 
-  CURRENT STATUS OF THE GAME          
-  
-  Current Sun points : 125
-  
-  Current Pea Shooters on the grass : 0
-  
-  Current Sun Flowers on the grass : 1
-  
-  Current Number of Zombies on the grass: 6
-  
-  As we can see above that the points increased to 125 points from 75 points as we bought a sunflower that cost 50 points but the benefit of this plant is that it gives back hundred points to the user once bought. Moreover, we can see that the quantity of sunflower increased from 0 to 1. This is how a sunflower() method works in the Game class.
-  
- After typing in 'DropPeashooter' a Peashooter will be dropped down on the grass. This plant is used to attack the zoombies in the 
- field. The peaShooter() method is called in the processCommand() method in the Game class to drop the peaShooter on the grass. After
- the peaShooter has beem dropped a currPoint() method is called to show the status of the game as shown below:
- 
-  CURRENT STATUS OF THE GAME          
- 
-  Current Sun points : 25
-           
-  Current Pea Shooters on the grass : 1
-           
-  Current Sun Flowers on the grass : 1
-           
-  Current Number of Zombies on the grass: 6
-  
-  We can see above that peaShooter increased from 0 to 1.
-  
-  To kill the zoombies we use 'Shoot' command. The shoot() method is implemented by the 'Shoot' command whenever typed in by the user. The shoot() method have several conditions that are checked against the situation of the game and the amount of peaShooters the user possess to kill the zoombies. To win the game, The following conditions shown below are usually checked to process the shoot command.
- The simple rule to win this game is as followed:
-  
-  1) If Peashooter assigned by the user are more than the zoombies in the game than we will the game
-  
-  2) If peashooter and zoombies are equal in number than we win the game because each peeshooter kills one zoombie and one zoombie kills 
-  one peashooter; therefore, no one is left in the field alive but the house is safe as there are no more zoombies to kill.
-  
-  3) If there are three peeshooters on the field than three zombies are killed by the peashooters and the other three zoombies are 
-  
-  killed by the lawnmower; thus,  we win the game as all zoombies are dead.
-  
-  The rules to loose the game are:
- 
- If peashooters are less than 3 like 2 or 1 than we lose the game because all the peeshooters die after killing one or two zombies and 
- all the 3 landmowers are used to kill 3 more zombies but still one or two more zoombies are left on the grass attacking the house; thus, we lose the game. Therefore, this is how the game class is used to implement the game.
-
-
-
-
-
-
+HOW TO USE THE GAME: So ,we have to go to the MenuBar and click on the new which would start the new game. Then, we can add plants and peashooters to the field while the zombies enter the field. We initially start with 10 sunPoints then as we buy the sunflower we get hike in points and 
+we have with every 3 turns we get hike of some sun points. We can both LOSE and WIN the Game.
 
 
