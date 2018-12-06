@@ -1,8 +1,12 @@
 
 Milestone 4:
 
-Two more things: 1- Save/load features. You may use Java Serialization to
-achieve this. 2- Game level builder. The levels may be saved in XML. 5% overall project
+Two more things:
+
+1- Save/load features. You may use Java Serialization to
+achieve this. 
+
+2- Game level builder. The levels may be saved in XML. 5% overall project
 
 bonus: try a real time version of the game and/or porting it to the Android platform.
 
