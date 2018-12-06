@@ -17,7 +17,7 @@ well packaged, and the program(s) should be easy to install and run.
 
 Group 6:
 
-Amandeep Singh: Coding for Model,Controller classes readme file,class diagram and sequence diagrams.
+Amandeep Singh: Coding for Model,Controller classes readme file,UML diagrams and Reflection on design document.
 
 Zoha Mehdi: Coding for View, Controller classes and writing the JUnit tests diagrams.
 
@@ -47,6 +47,8 @@ VIEW PACKAGE: contains the classes that act as different panel for the main FRAM
 CONTROLLER PACKAGE : Contains only the controller class is responsible to handle all the events  caused by the view using the MVC style. The undo,redo and skipturn features as methods have been added to the controller class to pass on the message to model, that we want to implement the following command. In the actionPerformed methods which will handle all the events caused by the view using the MVC style, we have added two else if statements for the save and load feature of the game.
 
 TESTS PACKAGE: The tests package contains all the valid tests for  the different kinds of plants and the zombies.
+
+REFLECTION ON DESIGN: This document explains about how we personally feel about the code and design of the game as well as the stages of advancement of the Project.
 
 The User Visible changes for the game: The newLevel, save and load has been added to the menubar for this milestone.
 The Class diagrams differs a bit from milestone 3, as we have added the methods for the save and load feature to the model, controller and the view class.
