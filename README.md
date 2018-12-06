@@ -1,19 +1,19 @@
 
-Milestone 3:
+Milestone 4:
 
-Complete Implementation: fully-featured with various types of plants and
-zombies, and unlimited undo/redo feature.
+Two more things: 1- Save/load features. You may use Java Serialization to
+achieve this. 2- Game level builder. The levels may be saved in XML. 5% overall project
 
-• Deliverables: readme file + code + refined tests + refined design + documentation.
-The program must work robustly, and the code must be “smell-free” (we will be
-hunting for smells!). Make sure that you document the changes since the last
-iteration, and the reason for those changes.
+bonus: try a real time version of the game and/or porting it to the Android platform.
 
-• Deadline: Monday November 25th. Weight: 30% of the overall project grade. 
+• Deliverables: readme file + code + tests + documentation. Your project should be
+well packaged, and the program(s) should be easy to install and run.
+
+• Deadline: Monday December 2nd. Weight: 35% of the overall project grade. 
 
 Group 6:
 
-Amandeep Singh: Coding for Model,Controller classes readme file and class diagram.
+Amandeep Singh: Coding for Model,Controller classes readme file,class diagram and sequence diagrams.
 
 Zoha Mehdi: Coding for View, Controller classes and writing the JUnit tests diagrams.
 
