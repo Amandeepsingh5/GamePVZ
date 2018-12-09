@@ -6,54 +6,64 @@ import javax.swing.JMenuItem;
 
 import controller.Controller;
 
-
 public class MenuBar {
+	
 	private JMenu mainMenu;
 	private JMenuBar menuBar;
-	private JMenuItem startGame;
-	private JMenuItem closeGame;
+	//JMenuItems
+	private JMenuItem startingGame;
+	private JMenuItem closingGame;
 
-	private JMenuItem newLevel;
 	
-
-  
-    private JMenuItem loadGame;
-	
+	/**
+	 * Initializes the The MenuBar by creating the Menu, Menu bar and Menu items
+	 */
     public MenuBar() {
 
 			menuBar= new JMenuBar();
 			mainMenu = new JMenu("File");		
 			//menuItems
-			startGame = new JMenuItem("New");
-			closeGame = new JMenuItem("Exit");
-			newLevel = new JMenuItem("New Level");
+			startingGame = new JMenuItem("New");
+			closingGame = new JMenuItem("Exit");
 			
-			mainMenu.add(newLevel);
-
-			 
+			mainMenu.add(startingGame);
+			mainMenu.add(closingGame);
 			
-			mainMenu.add(startGame);
-			mainMenu.add(closeGame);
-		
 			menuBar.add(mainMenu);
 	}
 	
+    /**
+  	 * Adds the actionlistener controller c to the GUI components.
+  	 * @param c -c is the controller object that is assigned to listen to this object instances GUI components.
+  	 */
 	public void addAction(Controller c){
-		startGame.addActionListener(c);
-		closeGame.addActionListener(c);
-		newLevel.addActionListener(c);
+		startingGame.addActionListener(c);
+		closingGame.addActionListener(c);
+		
+		
 	}
 	
-	public JMenuItem getStartGame(){
-		return startGame; //works fine
+	/**
+	 * Return startingGame JMenuItem.
+	 * @return JMenuItem -returns a JMenuItem
+	 */
+	public JMenuItem getStartingGame(){
+		return startingGame;
 	}
 	
-	public JMenuItem getCloseGame(){
-		return closeGame; //works fine
+	/**
+	 * Return closingGame JMenuItem.
+	 * @return JMenuItem -returns a JMenuItem
+	 */
+	public JMenuItem getClosingGame(){
+		return closingGame;
 	}
-	public JMenuItem getNewLevel(){
-		return newLevel; // couldnt get this one either
-	}
+	
+	
+	/**
+	 * Return menubar JMenuBar.
+	 * @return JMenuBar -returns a JMenuBar
+	 */
 	public JMenuBar getMenuBar(){
 		return menuBar;
 	}
